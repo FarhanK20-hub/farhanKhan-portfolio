@@ -2,7 +2,7 @@
 // Shared TypeScript Types
 // ══════════════════════════════════════
 
-export type ScreenState = 'gate' | 'select' | 'architect' | 'storyteller';
+export type ScreenState = 'gate' | 'main-intro' | 'select' | 'story-intro' | 'architect' | 'storyteller';
 
 export interface Skill {
   icon: string;
@@ -17,6 +17,11 @@ export interface ProjectMetric {
   k: string;
 }
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   num: string;
   title: string;
@@ -27,7 +32,7 @@ export interface Project {
   desc: string;
   metrics: ProjectMetric[];
   stack: string[];
-  links: string[];
+  links: ProjectLink[];
 }
 
 export interface TimelineItem {
@@ -42,4 +47,11 @@ export interface WorkItem {
   cat: string;
   title: string;
   grad: string;
+}
+
+export interface Certificate {
+  year: string;
+  name: string;
+  issuer: string;
+  category: string;
 }
