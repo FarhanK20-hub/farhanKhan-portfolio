@@ -38,15 +38,17 @@ export default function AIAssistant() {
     }
   }, [messages, isTyping]);
 
+let nextMsgId = 100;
+
   const handleQuestion = (q: string) => {
     if (isTyping) return;
     
-    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: q };
+    const userMsg: Message = { id: String(nextMsgId++), role: 'user', text: q };
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
 
     setTimeout(() => {
-      const aiMsgId = (Date.now() + 1).toString();
+      const aiMsgId = String(nextMsgId++);
       const aiResponse = ANSWERS[q] || "I don't have that information right now.";
       
       setMessages(prev => [...prev, { id: aiMsgId, role: 'ai', text: '', isStreaming: true }]);

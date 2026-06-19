@@ -28,7 +28,8 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Render on client only
-    setIsVisible(true);
+    const t = setTimeout(() => setIsVisible(true), 0);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {

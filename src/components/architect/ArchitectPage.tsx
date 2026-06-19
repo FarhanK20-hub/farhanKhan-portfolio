@@ -40,7 +40,7 @@ export default function ArchitectPage() {
 
   useEffect(() => {
     if (triggeredOS) {
-      setOsActive(true);
+      setTimeout(() => setOsActive(true), 0);
     }
     
     // Fallback/Custom event listener for the terminal

@@ -27,6 +27,15 @@ export default function StoryIntro() {
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
 
+  const skipIntro = React.useCallback(() => {
+    if (tlRef.current) tlRef.current.kill();
+    gsap.to(containerRef.current, {
+      opacity: 0,
+      duration: 0.4,
+      onComplete: () => navigate('storyteller'),
+    });
+  }, [navigate]);
+
   // ESC to skip
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -34,16 +43,7 @@ export default function StoryIntro() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
-  const skipIntro = () => {
-    if (tlRef.current) tlRef.current.kill();
-    gsap.to(containerRef.current, {
-      opacity: 0,
-      duration: 0.4,
-      onComplete: () => navigate('storyteller'),
-    });
-  };
+  }, [skipIntro]);
 
   useEffect(() => {
     const tl = gsap.timeline();

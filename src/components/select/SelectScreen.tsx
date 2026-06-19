@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useNavigation } from '@/context/NavigationContext';
 
 export default function SelectScreen() {
@@ -54,7 +54,6 @@ export default function SelectScreen() {
   useEffect(() => {
     if (!hoveredSide) return;
     
-    let interval: NodeJS.Timeout;
     const spawnParticle = (side: 'arch' | 'story') => {
       const p = document.createElement('div');
       const x = 20 + Math.random() * 60;
@@ -75,7 +74,7 @@ export default function SelectScreen() {
       }
     };
 
-    interval = setInterval(() => spawnParticle(hoveredSide), 180);
+    const interval = setInterval(() => spawnParticle(hoveredSide), 180);
     return () => clearInterval(interval);
   }, [hoveredSide]);
 

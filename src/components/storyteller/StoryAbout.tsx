@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import RevealOnScroll from '@/components/shared/RevealOnScroll';
 
@@ -100,7 +100,7 @@ export default function StoryAbout() {
 
         <FilmStripDivider />
 
-        <PullQuote>I don't make content. I make moments.</PullQuote>
+        <PullQuote>I don&apos;t make content. I make moments.</PullQuote>
 
         <RevealLines className="story-para">
           Under FRK Productions, I craft visual narratives for brands, artists, and stories that deserve to be seen. Every project begins with a single question: what do you want someone to carry with them long after the screen goes dark?

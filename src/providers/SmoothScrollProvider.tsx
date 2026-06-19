@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, createContext, useContext, ReactNode } from 'react';
+import React, { useEffect, createContext, useContext, ReactNode } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 
@@ -15,37 +15,37 @@ export function useSmoothScroll() {
 }
 
 export default function SmoothScrollProvider({ children }: { children: ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
+  const [lenis, setLenis] = React.useState<Lenis | null>(null);
 
   useEffect(() => {
     // Respect reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const lenis = new Lenis({
+    const newLenis = new Lenis({
       lerp: 0.12,
       duration: 1.0,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       touchMultiplier: 1.5,
     });
 
-    lenisRef.current = lenis;
+    setTimeout(() => setLenis(newLenis), 0);
 
     // Connect Lenis to GSAP ticker for perfect sync
     gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
+      newLenis.raf(time * 1000);
     });
 
     gsap.ticker.lagSmoothing(0);
 
     return () => {
-      lenis.destroy();
-      lenisRef.current = null;
+      newLenis.destroy();
+      setLenis(null);
     };
   }, []);
 
   return (
-    <SmoothScrollContext.Provider value={{ lenis: lenisRef.current }}>
+    <SmoothScrollContext.Provider value={{ lenis }}>
       {children}
     </SmoothScrollContext.Provider>
   );

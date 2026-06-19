@@ -11,9 +11,10 @@ export function useTypewriter(words: string[]) {
 
     if (isDeleting) {
       if (text === '') {
-        setIsDeleting(false);
-        setWordIdx((prev) => (prev + 1) % words.length);
-        timer = setTimeout(() => {}, 350); // Pause before typing next word
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setWordIdx((prev) => (prev + 1) % words.length);
+        }, 350); // Pause before typing next word
       } else {
         timer = setTimeout(() => {
           setText(currentWord.substring(0, text.length - 1));

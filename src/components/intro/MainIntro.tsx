@@ -7,12 +7,14 @@ import { useNavigation } from '@/context/NavigationContext';
 declare global {
   interface Window {
     onYouTubeIframeAPIReady: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     YT: any;
   }
 }
 
 export default function MainIntro() {
   const { navigate, setHoverCursor } = useNavigation();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
   const [isReady, setIsReady] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -45,10 +47,12 @@ export default function MainIntro() {
           mute: 0
         },
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onReady: (event: any) => {
             playerRef.current = event.target;
             setIsReady(true);
           },
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onStateChange: (event: any) => {
             // YT.PlayerState.ENDED = 0
             if (event.data === 0) {

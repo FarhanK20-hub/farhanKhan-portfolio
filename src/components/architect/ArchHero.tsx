@@ -29,7 +29,7 @@ export default function ArchHero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const parallaxStyle = {};
+
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();

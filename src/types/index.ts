@@ -26,7 +26,7 @@ export interface Project {
   num: string;
   title: string;
   tagline: string;
-  year: string;
+  year?: string;
   badge: string;
   badgeClass: 'badge-deployed' | 'badge-progress' | 'badge-concept';
   desc: string;
@@ -55,7 +55,7 @@ export interface WorkItem {
 }
 
 export interface Certificate {
-  year: string;
+  year?: string;
   name: string;
   issuer: string;
   category: string;

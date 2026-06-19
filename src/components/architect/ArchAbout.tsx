@@ -51,7 +51,7 @@ function buildNodes(): OrbitNode[] {
 const ALL_NODES = buildNodes();
 
 export default function ArchAbout() {
-  const { ref, isInView } = useInView({ threshold: 0.1 });
+  const { ref } = useInView({ threshold: 0.1 });
   const { text: titleText, triggerGlitch, stopGlitch } = useTitleGlitch('The Beginning');
 
   const [activeSkill, setActiveSkill] = useState<string | null>(null);

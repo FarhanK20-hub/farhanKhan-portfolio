@@ -42,15 +42,17 @@ export default function StoryAI() {
     }
   }, [messages, isTyping]);
 
+let nextStoryMsgId = 100;
+
   const handleQuestion = (q: string) => {
     if (isTyping) return;
 
-    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: q };
+    const userMsg: Message = { id: String(nextStoryMsgId++), role: 'user', text: q };
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
 
     setTimeout(() => {
-      const aiMsgId = (Date.now() + 1).toString();
+      const aiMsgId = String(nextStoryMsgId++);
       const aiResponse = ANSWERS[q] || "Cut. Let's try that again — ask me something about the work.";
 
       setMessages(prev => [...prev, { id: aiMsgId, role: 'ai', text: '', isStreaming: true }]);

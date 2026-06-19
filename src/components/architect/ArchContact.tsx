@@ -39,7 +39,7 @@ export default function ArchContact() {
 
   return (
     <RevealOnScroll className="arch-sec bg-alt" id="arch-contact">
-      <div className="sec-eyebrow">05 — LET'S BUILD SOMETHING</div>
+      <div className="sec-eyebrow">05 — LET&apos;S BUILD SOMETHING</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}

@@ -25,11 +25,11 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   const [hoverText, setHoverText] = useState<string | null>(null);
   const [cursorState, setCursorState] = useState<CursorState>('default');
 
-  const navigate = (target: ScreenState) => {
+  const navigate = React.useCallback((target: ScreenState) => {
     if (target === screen) return;
     setIsWiping(true);
     setNextScreen(target);
-  };
+  }, [screen]);
 
   useEffect(() => {
     if (isWiping && nextScreen) {
@@ -72,7 +72,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [screen]);
+  }, [screen, navigate]);
 
   // Body classes for cursor theme (arch vs story)
   useEffect(() => {

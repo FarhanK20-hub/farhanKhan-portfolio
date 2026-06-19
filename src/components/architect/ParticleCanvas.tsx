@@ -14,7 +14,7 @@ export default function ParticleCanvas() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let pts: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
+    const pts: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
     let animationFrameId: number;
     let w = 0, h = 0;
 
