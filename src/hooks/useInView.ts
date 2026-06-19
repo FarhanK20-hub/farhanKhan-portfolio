@@ -22,7 +22,8 @@ export function useInView(options?: IntersectionObserverInit) {
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, [hasTriggered, options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasTriggered, JSON.stringify(options)]);
 
   return { ref, isInView };
 }

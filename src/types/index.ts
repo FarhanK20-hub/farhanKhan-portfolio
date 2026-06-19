@@ -47,6 +47,11 @@ export interface WorkItem {
   cat: string;
   title: string;
   grad: string;
+  tab: string;
+  desc?: string;
+  videoId?: string;
+  image?: string;
+  metrics?: { v: string; k: string }[];
 }
 
 export interface Certificate {

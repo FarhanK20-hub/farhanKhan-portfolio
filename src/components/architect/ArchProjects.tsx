@@ -7,6 +7,7 @@ import { PROJECTS } from '@/lib/data';
 import { useNavigation } from '@/context/NavigationContext';
 import { useTitleGlitch } from '@/hooks/useGlitch';
 import { playProjectOpenSound } from '@/lib/sound';
+import LiveCounter from '@/components/shared/LiveCounter';
 
 export default function ArchProjects() {
   const [openProject, setOpenProject] = useState<string | null>(null);
@@ -44,7 +45,7 @@ export default function ArchProjects() {
 
   return (
     <RevealOnScroll className="arch-sec bg-surface" id="arch-projects">
-      <div className="sec-eyebrow">03 — PROOF OF WORK</div>
+      <div className="sec-eyebrow">02 — PROOF OF WORK</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}
@@ -53,6 +54,21 @@ export default function ArchProjects() {
         {titleText}
       </div>
       <div className="sec-rule"></div>
+      
+      <div className="arch-live-stats" style={{ display: 'flex', gap: '40px', justifyContent: 'center', margin: '40px 0', fontFamily: 'var(--font-jetbrains)' }}>
+         <div className="arch-stat-box" style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={100} duration={2} />+</div>
+            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>CONTRIBUTIONS/YR</div>
+         </div>
+         <div className="arch-stat-box" style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={20} duration={2} />+</div>
+            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>PROJECTS</div>
+         </div>
+         <div className="arch-stat-box" style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={4} duration={2} />+</div>
+            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>SAAS SHIPPED</div>
+         </div>
+      </div>
       
       <AnimatePresence mode="wait">
         {!isUnlocked ? (

@@ -1,113 +1,237 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@/context/NavigationContext';
+import gsap from 'gsap';
 
-declare global {
-  // It's possible the API is already loaded from MainIntro, but we declare just in case
-  interface Window {
-    onYouTubeIframeAPIReady: () => void;
-    YT: any;
-  }
-}
+const lines = [
+  { text: "Some people make content.", size: '22px', weight: 300 },
+  { text: "Some tell stories.", size: '26px', weight: 300 },
+  { text: "Some make people feel something.", size: '30px', weight: 300 },
+];
 
 export default function StoryIntro() {
-  const { navigate, setHoverCursor } = useNavigation();
-  const [showSkip, setShowSkip] = useState(false);
-  const playerRef = useRef<any>(null);
+  const { navigate } = useNavigation();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const leaderRef = useRef<HTMLDivElement>(null);
+  const linesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const welcomeRef = useRef<HTMLDivElement>(null);
+  const skipRef = useRef<HTMLButtonElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const [hasMouseMoved, setHasMouseMoved] = useState(false);
 
+  // Show skip only on first mouse movement
   useEffect(() => {
-    // Show skip button after 3 seconds
-    const timer = setTimeout(() => setShowSkip(true), 3000);
-    return () => clearTimeout(timer);
+    const onMove = () => setHasMouseMoved(true);
+    window.addEventListener('mousemove', onMove, { once: true });
+    return () => window.removeEventListener('mousemove', onMove);
   }, []);
 
+  // ESC to skip
   useEffect(() => {
-    // Load YouTube IFrame API if not already loaded
-    if (!window.YT) {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') skipIntro();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
-      window.onYouTubeIframeAPIReady = initPlayer;
-    } else {
-      initPlayer();
-    }
+  const skipIntro = () => {
+    if (tlRef.current) tlRef.current.kill();
+    gsap.to(containerRef.current, {
+      opacity: 0,
+      duration: 0.4,
+      onComplete: () => navigate('storyteller'),
+    });
+  };
 
-    function initPlayer() {
-      // Small timeout to ensure YT is fully ready if it was just loaded
-      if (!window.YT || !window.YT.Player) {
-        setTimeout(initPlayer, 100);
-        return;
-      }
-      playerRef.current = new window.YT.Player('youtube-player-story', {
-        videoId: 'kkr8t7Xo74k', // from https://youtu.be/kkr8t7Xo74k
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          showinfo: 0,
-          fs: 0,
-          disablekb: 1,
-          playsinline: 1
-        },
-        events: {
-          onReady: (event: any) => {
-            event.target.playVideo();
-          },
-          onStateChange: (event: any) => {
-            // YT.PlayerState.ENDED = 0
-            if (event.data === 0) {
-              navigate('storyteller');
-            }
-          }
-        }
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tlRef.current = tl;
+
+    // T+0ms: Void black. Silence.
+    tl.set(containerRef.current, { opacity: 1 });
+
+    // T+600ms: Film leader line expands from center
+    tl.fromTo(leaderRef.current,
+      { scaleX: 0, opacity: 1 },
+      { scaleX: 1, opacity: 1, duration: 0.4, ease: 'power2.inOut' },
+      0.6
+    );
+
+    // T+900ms: Leader fades
+    tl.to(leaderRef.current, { opacity: 0, duration: 0.2 }, 0.9);
+
+    // Type each line with character-by-character reveal
+    let currentTime = 1.1;
+
+    lines.forEach((line, lineIdx) => {
+      const lineEl = linesRef.current[lineIdx];
+      if (!lineEl) return;
+
+      // Set up: make line visible
+      tl.set(lineEl, { opacity: 1 }, currentTime);
+
+      // Animate each character
+      const chars = line.text.split('');
+      chars.forEach((_, charIdx) => {
+        const charDelay = currentTime + charIdx * 0.03 + (Math.random() * 0.01 - 0.005);
+        tl.fromTo(
+          lineEl.children[charIdx] as HTMLElement,
+          { opacity: 0, y: 8 },
+          { opacity: 1, y: 0, duration: 0.15, ease: 'power2.out' },
+          charDelay
+        );
       });
-    }
+
+      // Calculate when typing finishes
+      const typeEndTime = currentTime + chars.length * 0.03 + 0.15;
+
+      // Hold, then fade out
+      if (lineIdx < lines.length - 1) {
+        tl.to(lineEl, { opacity: 0, duration: 0.3 }, typeEndTime + 0.8);
+        currentTime = typeEndTime + 1.5; // Gap between lines
+      } else {
+        // Last line — longer hold
+        tl.to(lineEl, { opacity: 0, duration: 0.5 }, typeEndTime + 1.5);
+        currentTime = typeEndTime + 2.2;
+      }
+    });
+
+    // Welcome — fade in softly (NOT typed)
+    tl.fromTo(welcomeRef.current,
+      { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, duration: 1.5, ease: 'power2.out' },
+      currentTime + 0.5
+    );
+
+    // Hold welcome for 2s, then fade everything
+    tl.to(containerRef.current, {
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.in',
+      onComplete: () => navigate('storyteller'),
+    }, currentTime + 3.5);
 
     return () => {
-      if (playerRef.current && typeof playerRef.current.destroy === 'function') {
-        playerRef.current.destroy();
-      }
+      tl.kill();
     };
   }, [navigate]);
 
   return (
-    <div className="screen active" id="screen-story-intro" style={{ backgroundColor: '#000', display: 'flex', position: 'fixed', inset: 0, zIndex: 100 }}>
-      <div style={{ position: 'absolute', inset: -100, pointerEvents: 'none' }}>
-        <div 
-          id="youtube-player-story" 
-          style={{ 
-            width: '100%', 
-            height: '100%',
-          }} 
-        />
+    <div
+      ref={containerRef}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100,
+        backgroundColor: '#000',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+      onClick={skipIntro}
+    >
+      {/* Film leader line */}
+      <div
+        ref={leaderRef}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '120px',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, #fff, transparent)',
+          opacity: 0,
+          transformOrigin: 'center',
+        }}
+      />
+
+      {/* Typed lines container */}
+      <div style={{ position: 'relative', width: '100%', maxWidth: '600px', padding: '40px', textAlign: 'center' }}>
+        {lines.map((line, idx) => (
+          <div
+            key={idx}
+            ref={(el) => { linesRef.current[idx] = el; }}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: line.size,
+              fontWeight: line.weight,
+              fontStyle: 'italic',
+              color: '#F5F0E8',
+              letterSpacing: '0.04em',
+              whiteSpace: 'nowrap',
+              opacity: 0,
+            }}
+          >
+            {line.text.split('').map((char, charIdx) => (
+              <span
+                key={charIdx}
+                style={{
+                  display: 'inline-block',
+                  opacity: 0,
+                  minWidth: char === ' ' ? '0.3em' : undefined,
+                }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
-      
-      {showSkip && (
+
+      {/* Welcome */}
+      <div
+        ref={welcomeRef}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontFamily: 'var(--font-cormorant)',
+          fontSize: 'clamp(48px, 6vw, 72px)',
+          fontWeight: 300,
+          color: '#F5F0E8',
+          letterSpacing: '0.3em',
+          opacity: 0,
+          textAlign: 'center',
+        }}
+      >
+        Welcome.
+      </div>
+
+      {/* Skip — only appears on first mouse move */}
+      {hasMouseMoved && (
         <button
-          onClick={() => navigate('storyteller')}
-          onMouseEnter={() => setHoverCursor(true)}
-          onMouseLeave={() => setHoverCursor(false)}
+          ref={skipRef}
+          onClick={(e) => { e.stopPropagation(); skipIntro(); }}
           style={{
             position: 'absolute',
-            bottom: '40px',
+            top: '32px',
             right: '40px',
-            color: '#fff',
+            color: '#F5F0E8',
             fontFamily: 'var(--font-jetbrains)',
-            fontSize: '12px',
-            letterSpacing: '0.15em',
+            fontSize: '9px',
+            letterSpacing: '0.2em',
             zIndex: 110,
-            opacity: 0.6,
+            opacity: 0.3,
             transition: 'opacity 0.3s',
-            cursor: 'none'
+            cursor: 'none',
+            background: 'none',
+            border: 'none',
+            outline: 'none',
+            textTransform: 'uppercase',
           }}
-          onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-          onMouseOut={(e) => e.currentTarget.style.opacity = '0.6'}
+          onMouseOver={(e) => (e.currentTarget.style.opacity = '0.8')}
+          onMouseOut={(e) => (e.currentTarget.style.opacity = '0.3')}
         >
-          SKIP INTRO →
+          SKIP →
         </button>
       )}
     </div>

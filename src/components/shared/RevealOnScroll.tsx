@@ -19,9 +19,9 @@ export default function RevealOnScroll({ children, className = '', delay = 0, st
     <motion.div
       id={id}
       ref={ref}
-      initial={{ opacity: 0, scale: 0.92, filter: 'blur(12px)', y: 60 }}
-      animate={isInView ? { opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 } : { opacity: 0, scale: 0.92, filter: 'blur(12px)', y: 60 }}
-      transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay }}
       className={`reveal ${className}`}
       style={style}
     >

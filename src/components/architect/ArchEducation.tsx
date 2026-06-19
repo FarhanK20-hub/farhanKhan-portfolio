@@ -12,7 +12,7 @@ export default function ArchEducation() {
 
   return (
     <RevealOnScroll className="arch-sec bg-surface" id="arch-education">
-      <div className="sec-eyebrow">05 — EDUCATION</div>
+      <div className="sec-eyebrow">04 — EDUCATION</div>
       <div
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}

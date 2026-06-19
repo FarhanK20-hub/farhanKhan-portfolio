@@ -1,23 +1,30 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigation } from '@/context/NavigationContext';
 
+/**
+ * ScrollProgress — Ultra-lightweight scroll progress bar.
+ * OPTIMIZED: Uses direct DOM manipulation instead of useState + re-renders.
+ */
 export default function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
   const { screen } = useNavigation();
 
   useEffect(() => {
     if (screen !== 'architect' && screen !== 'storyteller') return;
 
+    const bar = barRef.current;
+    if (!bar) return;
+
     const updateScroll = () => {
       const scrollY = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
       if (docHeight <= 0) {
-        setProgress(0);
+        bar.style.width = '0%';
       } else {
-        const currentProgress = Math.min((scrollY / docHeight) * 100, 100);
-        setProgress(currentProgress);
+        const progress = Math.min((scrollY / docHeight) * 100, 100);
+        bar.style.width = `${progress}%`;
       }
     };
 
@@ -35,16 +42,17 @@ export default function ScrollProgress() {
 
   return (
     <div
+      ref={barRef}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         height: '1px',
-        width: `${progress}%`,
+        width: '0%',
         background: bg,
         zIndex: 999,
         pointerEvents: 'none',
-        transition: 'width 0.1s linear'
+        willChange: 'width',
       }}
     />
   );

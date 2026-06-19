@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import StoryHero from './StoryHero';
 import StoryAbout from './StoryAbout';
-import StoryReel from './StoryReel';
 import StoryWork from './StoryWork';
 import StoryClients from './StoryClients';
 import StoryContact from './StoryContact';
 import StoryFooter from './StoryFooter';
 import { useNavigation } from '@/context/NavigationContext';
+import StoryAI from './StoryAI';
 
 export default function StorytellerPage() {
   const { navigate, setHoverCursor } = useNavigation();
@@ -38,11 +38,11 @@ export default function StorytellerPage() {
       
       <StoryHero />
       <StoryAbout />
-      <StoryReel />
       <StoryWork />
       <StoryClients />
       <StoryContact />
       <StoryFooter />
+      <StoryAI />
     </div>
   );
 }

@@ -2,15 +2,17 @@
 
 > "I don't just build systems. I make them inevitable."
 
-A highly immersive, dual-persona portfolio built for Farhan Khan, an ML Engineer, Full-Stack Developer, and Cloud Architect. The application seamlessly blends enterprise-grade engineering with cinematic storytelling.
+A highly immersive, dual-persona portfolio built for Farhan Khan, an ML Engineer, Full-Stack Developer, Cloud Architect, and Cinematic Storyteller. The application seamlessly blends enterprise-grade engineering with cinematic visual storytelling.
 
 ## 🚀 Features
 
 - **Dual Personas:** Switch seamlessly between "The Architect" (a precise, data-driven ML engineering profile) and "The Storyteller" (a cinematic, visually-driven creative profile).
-- **Recruiter View:** A fast, scannable, data-dense view optimized for ATS and recruiters.
+- **Cinematic Experience:** Starts with an immersive video intro sequence with sound design and letterboxing. 
 - **FarhanOS:** A hidden Easter Egg terminal interface mimicking a retro desktop environment. Access it by typing `boot os`.
-- **Harvey Specter AI Assistant:** An arrogant but factually accurate AI assistant ready to answer questions about Farhan's experience.
-- **Custom Hardware-Accelerated Physics:** Features an interactive Particle Canvas and a global Custom Cursor with contextual magnetic snapping.
+- **Harvey Specter AI Assistant:** An arrogant but factually accurate AI assistant ready to answer questions about Farhan's experience on the Architect side.
+- **Storyteller AI:** A cinematic, brooding AI assistant on the Storyteller side that answers questions about Farhan's creative vision.
+- **Custom Hardware-Accelerated Physics:** Features an interactive GPU-accelerated Particle Canvas and a global Custom Cursor with contextual magnetic snapping.
+- **Dynamic Live Stats:** Animated, Framer Motion powered live counters for social statistics and metrics.
 - **Real-Time Communications:** Fully integrated contact form using EmailJS.
 
 ## 🛠 Tech Stack
@@ -18,8 +20,9 @@ A highly immersive, dual-persona portfolio built for Farhan Khan, an ML Engineer
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)
 - **Library:** React 19
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **Animations:** Framer Motion
+- **Styling:** Vanilla CSS (globals.css) with Tailwind CSS directives for resets.
+- **Animations:** Framer Motion & GSAP
+- **Scroll Interpolation:** Lenis (Smooth Scroll)
 - **Services:** EmailJS
 
 ## 📁 Folder Structure
@@ -29,13 +32,14 @@ src/
 ├── app/                  # Next.js App Router (page, layout, globals.css)
 ├── components/           
 │   ├── architect/        # Architect persona sections (Hero, About, Projects, etc.)
-│   ├── storyteller/      # Storyteller persona sections
-│   ├── shared/           # Shared UI (AIAssistant, CustomCursor, ParticleCanvas)
+│   ├── storyteller/      # Storyteller persona sections (Hero, Work, Clients, etc.)
+│   ├── shared/           # Shared UI (AIAssistant, CustomCursor, ParticleCanvas, LiveCounter)
 │   ├── gate/             # Landing/Entry gate components
+│   ├── intro/            # Video intro sequence components
 │   └── select/           # Persona selection screen
 ├── context/              # React Context (NavigationContext for global state)
-├── hooks/                # Custom hooks (useGlitch, useInView)
-├── lib/                  # Static data and utility functions (data.ts)
+├── hooks/                # Custom hooks (useGlitch, useInView, useMagnetic, useTypewriter)
+├── lib/                  # Static data and utility functions (data.ts, sound.ts)
 └── types/                # TypeScript type definitions
 ```
 

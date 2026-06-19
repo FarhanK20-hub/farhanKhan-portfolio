@@ -1,6 +1,7 @@
+// Force refresh
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@/context/NavigationContext';
 
 declare global {
@@ -12,14 +13,9 @@ declare global {
 
 export default function MainIntro() {
   const { navigate, setHoverCursor } = useNavigation();
-  const [showSkip, setShowSkip] = useState(false);
   const playerRef = useRef<any>(null);
-
-  useEffect(() => {
-    // Show skip button after 3 seconds
-    const timer = setTimeout(() => setShowSkip(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [isReady, setIsReady] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     // Load YouTube IFrame API
@@ -38,18 +34,20 @@ export default function MainIntro() {
       playerRef.current = new window.YT.Player('youtube-player', {
         videoId: 'KeKaZizc6Zk', // from https://youtu.be/KeKaZizc6Zk
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           controls: 0,
           modestbranding: 1,
           rel: 0,
           showinfo: 0,
           fs: 0,
           disablekb: 1,
-          playsinline: 1
+          playsinline: 1,
+          mute: 0
         },
         events: {
           onReady: (event: any) => {
-            event.target.playVideo();
+            playerRef.current = event.target;
+            setIsReady(true);
           },
           onStateChange: (event: any) => {
             // YT.PlayerState.ENDED = 0
@@ -70,7 +68,7 @@ export default function MainIntro() {
 
   return (
     <div className="screen active" id="screen-main-intro" style={{ backgroundColor: '#000', display: 'flex', position: 'fixed', inset: 0, zIndex: 100 }}>
-      <div style={{ position: 'absolute', inset: -100, pointerEvents: 'none' }}>
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: hasStarted ? 1 : 0, transition: 'opacity 1s ease-in-out' }}>
         <div 
           id="youtube-player" 
           style={{ 
@@ -80,30 +78,58 @@ export default function MainIntro() {
         />
       </div>
       
-      {showSkip && (
-        <button
-          onClick={() => navigate('select')}
-          onMouseEnter={() => setHoverCursor(true)}
-          onMouseLeave={() => setHoverCursor(false)}
-          style={{
-            position: 'absolute',
-            bottom: '40px',
-            right: '40px',
-            color: '#fff',
-            fontFamily: 'var(--font-jetbrains)',
-            fontSize: '12px',
-            letterSpacing: '0.15em',
-            zIndex: 110,
-            opacity: 0.6,
-            transition: 'opacity 0.3s',
-            cursor: 'none'
-          }}
-          onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-          onMouseOut={(e) => e.currentTarget.style.opacity = '0.6'}
-        >
-          SKIP INTRO →
-        </button>
+      {!hasStarted && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 110,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#000'
+        }}>
+          {isReady ? (
+            <button
+              onClick={() => {
+                setHasStarted(true);
+                if (playerRef.current) {
+                  // Safely call methods, since YouTube API object structure can sometimes vary
+                  if (typeof playerRef.current.unMute === 'function') playerRef.current.unMute();
+                  if (typeof playerRef.current.setVolume === 'function') playerRef.current.setVolume(100);
+                  if (typeof playerRef.current.playVideo === 'function') playerRef.current.playVideo();
+                }
+              }}
+              onMouseEnter={() => setHoverCursor(true)}
+              onMouseLeave={() => setHoverCursor(false)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#E0E0E0',
+                fontFamily: 'var(--font-jetbrains)',
+                fontSize: '18px',
+                letterSpacing: '0.15em',
+                cursor: 'none',
+                opacity: 0.8,
+                transition: 'opacity 0.3s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseOut={(e) => e.currentTarget.style.opacity = '0.8'}
+            >
+              [ INITIATE PLAYBACK ]
+            </button>
+          ) : (
+            <div style={{
+              color: '#444',
+              fontFamily: 'var(--font-jetbrains)',
+              fontSize: '14px',
+              letterSpacing: '0.2em'
+            }}>
+              LOADING...
+            </div>
+          )}
+        </div>
       )}
+
     </div>
   );
 }

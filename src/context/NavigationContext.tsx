@@ -4,12 +4,16 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { ScreenState } from '@/types';
 import { playHoverSound } from '@/lib/sound';
 
+export type CursorState = 'default' | 'hover' | 'link' | 'camera';
+
 interface NavigationContextType {
   screen: ScreenState;
   navigate: (target: ScreenState) => void;
   isWiping: boolean;
   setHoverCursor: (isHovering: boolean, text?: string) => void;
   hoverText: string | null;
+  cursorState: CursorState;
+  setCursorState: (state: CursorState) => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
@@ -19,6 +23,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   const [isWiping, setIsWiping] = useState(false);
   const [nextScreen, setNextScreen] = useState<ScreenState | null>(null);
   const [hoverText, setHoverText] = useState<string | null>(null);
+  const [cursorState, setCursorState] = useState<CursorState>('default');
 
   const navigate = (target: ScreenState) => {
     if (target === screen) return;
@@ -69,10 +74,10 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [screen]);
 
-  // Body classes for cursor
+  // Body classes for cursor theme (arch vs story)
   useEffect(() => {
     document.body.className = '';
-    if (screen === 'storyteller') {
+    if (screen === 'storyteller' || screen === 'story-intro') {
       document.body.classList.add('cursor-story');
     } else {
       document.body.classList.add('cursor-arch');
@@ -81,21 +86,21 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
 
   const setHoverCursor = (isHovering: boolean, text?: string) => {
     if (isHovering) {
-      document.body.classList.add('cursor-hover');
       playHoverSound();
       if (text) {
-        document.body.classList.add('cursor-text-active');
+        setCursorState('link');
         setHoverText(text);
+      } else {
+        setCursorState('hover');
       }
     } else {
-      document.body.classList.remove('cursor-hover');
-      document.body.classList.remove('cursor-text-active');
+      setCursorState('default');
       setHoverText(null);
     }
   };
 
   return (
-    <NavigationContext.Provider value={{ screen, navigate, isWiping, setHoverCursor, hoverText }}>
+    <NavigationContext.Provider value={{ screen, navigate, isWiping, setHoverCursor, hoverText, cursorState, setCursorState }}>
       {children}
     </NavigationContext.Provider>
   );
@@ -108,3 +113,4 @@ export function useNavigation() {
   }
   return context;
 }
+

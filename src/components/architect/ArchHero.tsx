@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTypewriter } from '@/hooks/useTypewriter';
 import { useGlitch } from '@/hooks/useGlitch';
@@ -14,20 +14,22 @@ export default function ArchHero() {
   const typewriterText = useTypewriter(TYPEWRITER_WORDS);
   const { text: glitchedText, triggerGlitch } = useGlitch('ARCHITECT', 6000);
   const btnRef = useMagnetic<HTMLAnchorElement>();
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
-  // Parallax state
-  const [scrollY, setScrollY] = useState(0);
-
+  // Parallax using direct DOM manipulation (no re-renders)
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const y = window.scrollY;
+        contentRef.current.style.transform = `translateY(${y * 0.28}px)`;
+        contentRef.current.style.opacity = `${Math.max(0, 1 - y / 480)}`;
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const parallaxStyle = {
-    transform: `translateY(${scrollY * 0.28}px)`,
-    opacity: Math.max(0, 1 - scrollY / 480)
-  };
+  const parallaxStyle = {};
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ export default function ArchHero() {
       <div className="arch-vignette"></div>
       <div className="arch-scanlines"></div>
 
-      <div className="hero-content" style={parallaxStyle}>
+      <div className="hero-content" ref={contentRef}>
         <motion.div
           className="hero-eyebrow"
           initial={{ opacity: 0, y: 22 }}

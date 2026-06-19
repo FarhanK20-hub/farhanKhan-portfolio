@@ -10,7 +10,7 @@ export default function ArchFooter() {
   return (
     <footer className="arch-footer" style={{ paddingBottom: showNotes ? '120px' : '40px', transition: 'padding 0.8s ease' }}>
       <div className="footer-text">
-        FARHAN KHAN <span className="footer-dot">·</span> BUILT WITH INTENT <span className="footer-dot">·</span> 2025
+        FARHAN KHAN <span className="footer-dot">·</span> BUILT WITH INTENT <span className="footer-dot">·</span> {new Date().getFullYear()}
       </div>
       <div 
         className="footer-text" 

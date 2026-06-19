@@ -12,7 +12,7 @@ export default function ArchTimeline() {
 
   return (
     <RevealOnScroll className="arch-sec bg-void" id="arch-timeline">
-      <div className="sec-eyebrow">04 — BEYOND CODE</div>
+      <div className="sec-eyebrow">03 — BEYOND CODE</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}

@@ -39,7 +39,7 @@ export default function ArchContact() {
 
   return (
     <RevealOnScroll className="arch-sec bg-alt" id="arch-contact">
-      <div className="sec-eyebrow">06 — LET'S BUILD SOMETHING</div>
+      <div className="sec-eyebrow">05 — LET'S BUILD SOMETHING</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}
@@ -90,10 +90,10 @@ export default function ArchContact() {
           </div>
           <div className="social-links">
             {[
-              { name: 'GitHub', url: 'https://github.com/FarhanK20-hub' },
-              { name: 'LinkedIn', url: 'https://www.linkedin.com/in/farhan-khan-3aa5442b0/' },
-              { name: 'Instagram', url: 'https://www.instagram.com/_farhan.who_/' },
-              { name: 'Resume PDF', url: '/resume-placeholder.pdf' }
+              { name: 'GitHub', url: 'https://github.com/FarhanK20-hub', stats: '100+ Contributions · 20+ Projects · 4+ SaaS' },
+              { name: 'LinkedIn', url: 'https://www.linkedin.com/in/farhan-khan-3aa5442b0/', stats: '1.5k+ Followers · 43k+ Impressions' },
+              { name: 'Instagram', url: 'https://www.instagram.com/_farhan.who_/', stats: '1.7k+ Followers · 1.9M+ Views' },
+              { name: 'Resume PDF', url: '/resume-placeholder.pdf', stats: 'Latest 2026 Version' }
             ].map(social => (
               <a 
                 key={social.name} 
@@ -101,11 +101,17 @@ export default function ArchContact() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ alignItems: 'flex-start' }}
                 onMouseEnter={() => setHoverCursor(true, social.name === 'GitHub' ? 'EXPLORE' : 'CONNECT')}
                 onMouseLeave={() => setHoverCursor(false)}
               >
-                <span>{social.name}</span>
-                <span className="sl-arrow">↗</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <span>{social.name}</span>
+                  <span style={{ fontSize: '8px', color: '#555', letterSpacing: '0.1em', transition: 'color 0.3s' }} className="sl-stat">
+                    {social.stats}
+                  </span>
+                </div>
+                <span className="sl-arrow" style={{ marginTop: '2px' }}>↗</span>
               </a>
             ))}
           </div>
