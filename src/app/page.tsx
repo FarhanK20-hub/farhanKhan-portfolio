@@ -8,6 +8,7 @@ import StoryIntro from '@/components/intro/StoryIntro';
 import SelectScreen from '@/components/select/SelectScreen';
 import ArchitectPage from '@/components/architect/ArchitectPage';
 import StorytellerPage from '@/components/storyteller/StorytellerPage';
+import RadioWidget from '@/components/shared/RadioWidget';
 
 export default function Home() {
   const { screen } = useNavigation();
@@ -20,6 +21,7 @@ export default function Home() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (screen !== 'architect' && screen !== 'storyteller') return;
+      if (!e.key) return;
 
       typed += e.key.toLowerCase();
       if (typed.length > secret.length) {
@@ -45,6 +47,9 @@ export default function Home() {
       {screen === 'story-intro' && <StoryIntro />}
       {screen === 'architect' && <ArchitectPage />}
       {screen === 'storyteller' && <StorytellerPage />}
+
+      {/* Persistent Music Player */}
+      {(screen === 'architect' || screen === 'storyteller') && <RadioWidget />}
 
       {/* Easter Egg Popup */}
       {easterEgg && (

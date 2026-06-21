@@ -23,6 +23,22 @@ export const STORY_QUOTES = [
 ];
 
 // ══════════════════════════════════════
+// BACKGROUND MUSIC TRACKS
+// ══════════════════════════════════════
+export const RADIO_TRACKS = [
+  {
+    title: 'Lose My Mind',
+    artist: 'Don Toliver ft. Doja Cat',
+    src: '/photos/songs/Don Toliver - Lose My Mind (feat. Doja Cat) [From F1 The Movie] [Official Audio].mp3',
+  },
+  {
+    title: 'Just Keep Watching',
+    artist: 'Tate McRae',
+    src: '/photos/songs/Tate McRae - Just Keep Watching (From F1 The Movie) [Official Audio].mp3',
+  },
+];
+
+// ══════════════════════════════════════
 // SKILLS DATA
 // ══════════════════════════════════════
 export const SKILLS: SkillsMap = {
@@ -173,6 +189,7 @@ export const PROJECTS: Project[] = [
     stack: ['YOLOv8', 'Flask', 'React', 'OpenCV', 'Docker', 'Grad-CAM'],
     links: [
       { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/Metal-Sheet-Defect-Detector' },
+      { label: 'Live Demo', url: 'https://metal-sheet-defect-detector.vercel.app/' },
     ],
   },
   {
@@ -311,7 +328,7 @@ export const TIMELINE: TimelineItem[] = [
   },
   {
     period: '2026',
-    dot: 'current',
+    dot: 'past',
     title: 'Data Science & AI/ML Intern',
     org: 'Tata Motors · Jamshedpur',
     detail:

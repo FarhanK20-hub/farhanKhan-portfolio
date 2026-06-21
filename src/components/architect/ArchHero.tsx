@@ -8,6 +8,8 @@ import { useMagnetic } from '@/hooks/useMagnetic';
 import { useNavigation } from '@/context/NavigationContext';
 import { TYPEWRITER_WORDS } from '@/lib/data';
 import ParticleCanvas from './ParticleCanvas';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 
 export default function ArchHero() {
   const { setHoverCursor } = useNavigation();
@@ -106,6 +108,19 @@ export default function ArchHero() {
             [ ENTER THE STACK ]
           </a>
           <div className="hero-scroll-link">↓ SCROLL</div>
+        </motion.div>
+
+        <motion.div
+          className="hero-socials"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.3 }}
+          style={{ display: 'flex', gap: '24px', marginTop: '32px' }}
+        >
+          <a href="https://github.com/FarhanK20-hub" target="_blank" rel="noopener noreferrer" style={{ color: '#00FF94', fontSize: '22px', opacity: 0.5, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'GITHUB'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.5'; setHoverCursor(false); }}><FaGithub /></a>
+          <a href="https://www.linkedin.com/in/farhan-khan-3aa5442b0/" target="_blank" rel="noopener noreferrer" style={{ color: '#00FF94', fontSize: '22px', opacity: 0.5, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'LINKEDIN'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.5'; setHoverCursor(false); }}><FaLinkedin /></a>
+          <a href="https://leetcode.com/u/Q3tQQteAio/" target="_blank" rel="noopener noreferrer" style={{ color: '#00FF94', fontSize: '22px', opacity: 0.5, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'LEETCODE'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.5'; setHoverCursor(false); }}><SiLeetcode /></a>
+          <a href="https://www.instagram.com/_farhan.who_/" target="_blank" rel="noopener noreferrer" style={{ color: '#00FF94', fontSize: '22px', opacity: 0.5, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'INSTAGRAM'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.5'; setHoverCursor(false); }}><FaInstagram /></a>
         </motion.div>
       </div>
 

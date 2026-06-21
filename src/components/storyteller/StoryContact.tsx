@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigation } from '@/context/NavigationContext';
 import { sendContactForm } from '@/lib/emailjs';
+import { playProjectOpenSound } from '@/lib/sound';
 
 export default function StoryContact() {
   const { setHoverCursor, setCursorState } = useNavigation();
@@ -24,10 +25,12 @@ export default function StoryContact() {
 
     try {
       await sendContactForm(formRef.current, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_STORY || '');
+      playProjectOpenSound();
       setBtnText('SENT SUCCESSFULLY');
       formRef.current.reset();
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+    } catch (error: unknown) {
+      const emailErr = error as { status?: number; text?: string };
+      console.error('EmailJS Error:', emailErr?.status, emailErr?.text, error);
       setBtnText('FAILED TO SEND');
     } finally {
       setTimeout(() => {
@@ -38,6 +41,7 @@ export default function StoryContact() {
   };
 
   const handleCopyEmail = () => {
+    playProjectOpenSound();
     navigator.clipboard.writeText('devrevolutionx@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -59,11 +63,19 @@ export default function StoryContact() {
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className="sf-row">
               <label className="sf-label">Your Name</label>
-              <input className="sf-input" type="text" name="name" placeholder="How shall I address you?" required />
+              <input className="sf-input" type="text" name="user_name" placeholder="How shall I address you?" required />
             </div>
             <div className="sf-row">
               <label className="sf-label">Your Email</label>
-              <input className="sf-input" type="email" name="email" placeholder="Where can I reach you?" required />
+              <input className="sf-input" type="email" name="user_email" placeholder="Where can I reach you?" required />
+            </div>
+            <div className="sf-row">
+              <label className="sf-label">Mobile</label>
+              <input className="sf-input" type="tel" name="user_mobile" placeholder="+91 XXXXX XXXXX" />
+            </div>
+            <div className="sf-row">
+              <label className="sf-label">Subject</label>
+              <input className="sf-input" type="text" name="user_subject" placeholder="What's on your mind?" required />
             </div>
             <div className="sf-row">
               <label className="sf-label">Project Details</label>
@@ -107,7 +119,8 @@ export default function StoryContact() {
               </div>
             </div>
             
-            <div className="story-socials">
+            <div className="story-socials" style={{ marginTop: '48px' }}>
+              <div style={{ fontFamily: 'var(--font-inter)', fontSize: '10px', fontWeight: 300, color: '#C9A84C', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '16px' }}>Follow the Journey</div>
               {[
                 { name: 'Instagram', url: 'https://www.instagram.com/_farhan.who_/', stats: '1.7k+ Followers / 1.9M+ Views' },
                 { name: 'GitHub', url: 'https://github.com/FarhanK20-hub', stats: '100+ Contributions / 4+ SaaS' },
@@ -119,17 +132,17 @@ export default function StoryContact() {
                   href={soc.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ alignItems: 'flex-start' }}
+                  style={{ alignItems: 'center' }}
                   onMouseEnter={() => setHoverCursor(true)}
                   onMouseLeave={() => setHoverCursor(false)}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <span>{soc.name}</span>
-                    <span style={{ fontSize: '9px', color: '#554', letterSpacing: '0.1em', transition: 'color 0.4s', textTransform: 'uppercase', fontFamily: 'var(--font-inter)' }} className="sl-stat">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <span className="soc-name">{soc.name}</span>
+                    <span className="sl-stat" style={{ fontSize: '10px', color: '#7a6f62', letterSpacing: '0.15em', transition: 'color 0.4s', textTransform: 'uppercase', fontFamily: 'var(--font-inter)', fontStyle: 'normal' }}>
                       {soc.stats}
                     </span>
                   </div>
-                  <span className="soc-arrow" style={{ marginTop: '2px' }}>↗</span>
+                  <span className="soc-arrow" style={{ fontSize: '16px' }}>↗</span>
                 </a>
               ))}
             </div>

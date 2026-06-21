@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { WORK_ITEMS, WORK_TABS_LIST } from '@/lib/data';
 import { useNavigation } from '@/context/NavigationContext';
 import { WorkItem } from '@/types';
+import { playProjectOpenSound } from '@/lib/sound';
 
 
 /* ════════════════════════════════════════════
@@ -222,7 +223,12 @@ export default function StoryWork() {
           <div
             key={tab}
             className={`work-tab ${activeTab === tab ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => {
+              if (activeTab !== tab) {
+                playProjectOpenSound();
+                setActiveTab(tab);
+              }
+            }}
             onMouseEnter={() => setHoverCursor(true)}
             onMouseLeave={() => setHoverCursor(false)}
           >

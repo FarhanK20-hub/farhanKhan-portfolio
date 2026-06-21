@@ -18,6 +18,21 @@ export default function MainIntro() {
   const playerRef = useRef<any>(null);
   const [isReady, setIsReady] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [showSkip, setShowSkip] = useState(false);
+
+  // Show skip button after a short delay once video starts
+  useEffect(() => {
+    if (!hasStarted) return;
+    const timer = setTimeout(() => setShowSkip(true), 2000);
+    return () => clearTimeout(timer);
+  }, [hasStarted]);
+
+  const handleSkip = () => {
+    if (playerRef.current && typeof playerRef.current.stopVideo === 'function') {
+      playerRef.current.stopVideo();
+    }
+    navigate('select');
+  };
 
   useEffect(() => {
     // Load YouTube IFrame API
@@ -132,6 +147,45 @@ export default function MainIntro() {
             </div>
           )}
         </div>
+      )}
+
+      {showSkip && (
+        <button
+          id="skip-intro-btn"
+          onClick={handleSkip}
+          onMouseEnter={() => setHoverCursor(true)}
+          onMouseLeave={() => setHoverCursor(false)}
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            right: '40px',
+            zIndex: 120,
+            background: 'rgba(255,255,255,0.06)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderRadius: '6px',
+            color: '#aaa',
+            fontFamily: 'var(--font-jetbrains)',
+            fontSize: '12px',
+            letterSpacing: '0.15em',
+            padding: '10px 22px',
+            cursor: 'none',
+            animation: 'fadeUp 0.6s ease forwards',
+            transition: 'color 0.3s, border-color 0.3s, background 0.3s',
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.color = '#fff';
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+            e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.color = '#aaa';
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+            e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+          }}
+        >
+          SKIP INTRO →
+        </button>
       )}
 
     </div>

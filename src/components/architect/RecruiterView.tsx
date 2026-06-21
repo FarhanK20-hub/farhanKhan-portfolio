@@ -39,7 +39,11 @@ export default function RecruiterView() {
             onMouseEnter={() => setHoverCursor(true, 'CONNECT')}
             onMouseLeave={() => setHoverCursor(false)}
           >LinkedIn</a>
-          <a href="/resume-placeholder.pdf" target="_blank" rel="noopener noreferrer" download="Farhan_Resume.pdf" className="rv-link rv-link-primary"
+          <a href="https://leetcode.com/u/Q3tQQteAio/" target="_blank" rel="noopener noreferrer" className="rv-link"
+            onMouseEnter={() => setHoverCursor(true, 'EXPLORE')}
+            onMouseLeave={() => setHoverCursor(false)}
+          >LeetCode</a>
+          <a href="/Farhan_Khan.pdf" target="_blank" rel="noopener noreferrer" download="Farhan_Khan.pdf" className="rv-link rv-link-primary"
             onMouseEnter={() => setHoverCursor(true, 'DOWNLOAD')}
             onMouseLeave={() => setHoverCursor(false)}
           >Download Resume ↓</a>

@@ -3,11 +3,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@/context/NavigationContext';
 import gsap from 'gsap';
+import { playStartupSound } from '@/lib/sound';
 
 const lines = [
-  { text: "Some people make content.", size: '22px', weight: 300 },
-  { text: "Some tell stories.", size: '26px', weight: 300 },
-  { text: "Some make people feel something.", size: '30px', weight: 300 },
+  "SOME PEOPLE MAKE CONTENT.",
+  "SOME TELL STORIES.",
+  "SOME MAKE YOU FEEL."
 ];
 
 export default function StoryIntro() {
@@ -46,72 +47,46 @@ export default function StoryIntro() {
   }, [skipIntro]);
 
   useEffect(() => {
+    playStartupSound();
     const tl = gsap.timeline();
     tlRef.current = tl;
 
     // T+0ms: Void black. Silence.
     tl.set(containerRef.current, { opacity: 1 });
 
-    // T+600ms: Film leader line expands from center
-    tl.fromTo(leaderRef.current,
-      { scaleX: 0, opacity: 1 },
-      { scaleX: 1, opacity: 1, duration: 0.4, ease: 'power2.inOut' },
-      0.6
-    );
-
-    // T+900ms: Leader fades
-    tl.to(leaderRef.current, { opacity: 0, duration: 0.2 }, 0.9);
-
-    // Type each line with character-by-character reveal
-    let currentTime = 1.1;
+    let currentTime = 0.8;
 
     lines.forEach((line, lineIdx) => {
       const lineEl = linesRef.current[lineIdx];
       if (!lineEl) return;
 
-      // Set up: make line visible
-      tl.set(lineEl, { opacity: 1 }, currentTime);
+      // Stark fade in while slowly pushing in (scale)
+      tl.fromTo(lineEl,
+        { opacity: 0, scale: 0.95, filter: 'blur(8px)' },
+        { opacity: 1, scale: 1.05, filter: 'blur(0px)', duration: 3.5, ease: 'power1.out' },
+        currentTime
+      );
 
-      // Animate each character
-      const chars = line.text.split('');
-      chars.forEach((_, charIdx) => {
-        const charDelay = currentTime + charIdx * 0.03 + (Math.random() * 0.01 - 0.005);
-        tl.fromTo(
-          lineEl.children[charIdx] as HTMLElement,
-          { opacity: 0, y: 8 },
-          { opacity: 1, y: 0, duration: 0.15, ease: 'power2.out' },
-          charDelay
-        );
-      });
+      // Sudden cut to black
+      tl.to(lineEl, { opacity: 0, duration: 0.1 }, currentTime + 3.5);
 
-      // Calculate when typing finishes
-      const typeEndTime = currentTime + chars.length * 0.03 + 0.15;
-
-      // Hold, then fade out
-      if (lineIdx < lines.length - 1) {
-        tl.to(lineEl, { opacity: 0, duration: 0.3 }, typeEndTime + 0.8);
-        currentTime = typeEndTime + 1.5; // Gap between lines
-      } else {
-        // Last line — longer hold
-        tl.to(lineEl, { opacity: 0, duration: 0.5 }, typeEndTime + 1.5);
-        currentTime = typeEndTime + 2.2;
-      }
+      currentTime += 4.5; // 3.5s animation + 1s beat of silence
     });
 
-    // Welcome — fade in softly (NOT typed)
+    // Welcome — pure Nolan tracking out effect
     tl.fromTo(welcomeRef.current,
-      { opacity: 0, scale: 0.97 },
-      { opacity: 1, scale: 1, duration: 1.5, ease: 'power2.out' },
-      currentTime + 0.5
+      { opacity: 0, letterSpacing: '0.1em', scale: 0.9 },
+      { opacity: 1, letterSpacing: '0.6em', scale: 1.1, duration: 4.5, ease: 'power2.out' },
+      currentTime
     );
 
-    // Hold welcome for 2s, then fade everything
+    // Fade to black and transition
     tl.to(containerRef.current, {
       opacity: 0,
-      duration: 0.8,
-      ease: 'power2.in',
+      duration: 1.5,
+      ease: 'power2.inOut',
       onComplete: () => navigate('storyteller'),
-    }, currentTime + 3.5);
+    }, currentTime + 4.5);
 
     return () => {
       tl.kill();
@@ -133,55 +108,27 @@ export default function StoryIntro() {
       }}
       onClick={skipIntro}
     >
-      {/* Film leader line */}
-      <div
-        ref={leaderRef}
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '120px',
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, #fff, transparent)',
-          opacity: 0,
-          transformOrigin: 'center',
-        }}
-      />
-
-      {/* Typed lines container */}
-      <div style={{ position: 'relative', width: '100%', maxWidth: '600px', padding: '40px', textAlign: 'center' }}>
+      {/* Cinematic lines container */}
+      <div style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {lines.map((line, idx) => (
           <div
             key={idx}
             ref={(el) => { linesRef.current[idx] = el; }}
             style={{
               position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              fontFamily: 'var(--font-cormorant)',
-              fontSize: line.size,
-              fontWeight: line.weight,
-              fontStyle: 'italic',
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'clamp(14px, 3vw, 24px)',
+              fontWeight: 400,
               color: '#F5F0E8',
-              letterSpacing: '0.04em',
-              whiteSpace: 'nowrap',
+              letterSpacing: '0.25em',
+              textAlign: 'center',
+              textTransform: 'uppercase',
               opacity: 0,
+              width: '100%',
+              padding: '0 20px',
             }}
           >
-            {line.text.split('').map((char, charIdx) => (
-              <span
-                key={charIdx}
-                style={{
-                  display: 'inline-block',
-                  opacity: 0,
-                  minWidth: char === ' ' ? '0.3em' : undefined,
-                }}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </span>
-            ))}
+            {line}
           </div>
         ))}
       </div>
@@ -194,16 +141,18 @@ export default function StoryIntro() {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          fontFamily: 'var(--font-cormorant)',
-          fontSize: 'clamp(48px, 6vw, 72px)',
+          fontFamily: 'var(--font-inter)',
+          fontSize: 'clamp(32px, 5vw, 64px)',
           fontWeight: 300,
-          color: '#F5F0E8',
-          letterSpacing: '0.3em',
+          color: '#C9A84C',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
           opacity: 0,
           textAlign: 'center',
+          width: '100%',
         }}
       >
-        Welcome.
+        WELCOME
       </div>
 
       {/* Skip — only appears on first mouse move */}

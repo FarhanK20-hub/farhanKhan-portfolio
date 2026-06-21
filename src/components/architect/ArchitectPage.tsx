@@ -30,8 +30,8 @@ export default function ArchitectPage() {
   useEffect(() => {
     if (triggeredHire) {
       const a = document.createElement('a');
-      a.href = '/resume-placeholder.pdf';
-      a.download = 'Farhan_Resume.pdf';
+      a.href = '/Farhan_Khan.pdf';
+      a.download = 'Farhan_Khan.pdf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

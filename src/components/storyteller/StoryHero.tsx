@@ -6,6 +6,8 @@ import { STORY_QUOTES } from '@/lib/data';
 import { useNavigation } from '@/context/NavigationContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -187,6 +189,20 @@ export default function StoryHero() {
           onMouseLeave={() => setHoverCursor(false)}
         >
           ▶&nbsp;&nbsp;ENTER THE REEL
+        </motion.div>
+
+        {/* Social Icons */}
+        <motion.div
+          className="story-social-icons"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: phase >= 2 ? 1 : 0 }}
+          transition={{ duration: 1.2, delay: 2.1 }}
+          style={{ display: 'flex', gap: '28px', marginTop: '40px', justifyContent: 'center' }}
+        >
+          <a href="https://www.instagram.com/_farhan.who_/" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A84C', fontSize: '24px', opacity: 0.6, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'INSTAGRAM'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.6'; setHoverCursor(false); }}><FaInstagram /></a>
+          <a href="https://github.com/FarhanK20-hub" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A84C', fontSize: '24px', opacity: 0.6, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'GITHUB'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.6'; setHoverCursor(false); }}><FaGithub /></a>
+          <a href="https://www.linkedin.com/in/farhan-khan-3aa5442b0/" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A84C', fontSize: '24px', opacity: 0.6, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'LINKEDIN'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.6'; setHoverCursor(false); }}><FaLinkedin /></a>
+          <a href="https://leetcode.com/u/Q3tQQteAio/" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A84C', fontSize: '24px', opacity: 0.6, transition: 'opacity 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; setHoverCursor(true, 'LEETCODE'); }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.6'; setHoverCursor(false); }}><SiLeetcode /></a>
         </motion.div>
       </div>
 
