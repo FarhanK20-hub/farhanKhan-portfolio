@@ -70,7 +70,7 @@ export default function RadioWidget() {
         style={{
           position: 'fixed',
           bottom: '30px',
-          right: '30px',
+          right: '100px',
           zIndex: 9999,
           display: 'flex',
           alignItems: 'center',

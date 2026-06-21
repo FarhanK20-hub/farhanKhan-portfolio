@@ -145,6 +145,15 @@ export default function GateScreen() {
               >
                 For the full experience, enable sound.
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 1.4 }}
+                className="gate-device-note"
+              >
+                Mobile compatible · Best on tablets, laptops &amp; larger screens
+              </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
