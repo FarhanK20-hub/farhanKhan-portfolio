@@ -2024,16 +2024,17 @@ textarea.sf-input{height:90px;resize:none}
 
 .story-socials{margin-top:36px;display:flex;flex-direction:column;gap:0}
 .story-soc{
-  font-family:var(--font-inter);font-size:9px;font-weight:300;
-  color:#3a3025;letter-spacing:0.25em;text-transform:uppercase;
-  padding:14px 0;border-bottom:1px solid #110e0a;
+  font-family:var(--font-cormorant);font-size:24px;font-weight:400;font-style:italic;
+  color:#B8A99A;letter-spacing:0.02em;
+  padding:18px 0;border-bottom:1px solid #110e0a;
   display:flex;align-items:center;justify-content:space-between;
-  transition:color 0.3s,padding-left 0.35s;
+  transition:color 0.3s,padding-left 0.35s, border-color 0.3s;
+  text-decoration:none;
 }
-.story-soc:hover{color:#C9A84C;padding-left:6px}
+.story-soc:hover{color:#C9A84C;padding-left:12px; border-bottom-color: rgba(201,168,76,0.3);}
 .story-soc:hover .sl-stat{color:rgba(201,168,76,0.8)!important}
 .story-soc .soc-arrow{opacity:0;transition:opacity 0.3s,transform 0.3s}
-.story-soc:hover .soc-arrow{opacity:1;transform:translateX(4px)}
+.story-soc:hover .soc-arrow{opacity:1;transform:translateX(8px)}
 
 /* End Mark (FIN) */
 .story-end-mark {

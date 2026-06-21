@@ -171,6 +171,7 @@ export default function FarhanOS({ onClose }: FarhanOSProps) {
                       <a href="mailto:devrevolutionx@gmail.com" target="_blank" rel="noopener noreferrer" className="os-link" onMouseEnter={() => setHoverCursor(true)} onMouseLeave={() => setHoverCursor(false)}>&gt; INITIALIZE EMAIL PROTOCOL</a>
                       <a href="https://www.linkedin.com/in/farhan-khan-3aa5442b0/" target="_blank" rel="noopener noreferrer" className="os-link" onMouseEnter={() => setHoverCursor(true)} onMouseLeave={() => setHoverCursor(false)}>&gt; ESTABLISH LINKEDIN CONNECTION</a>
                       <a href="https://github.com/FarhanK20-hub" target="_blank" rel="noopener noreferrer" className="os-link" onMouseEnter={() => setHoverCursor(true)} onMouseLeave={() => setHoverCursor(false)}>&gt; ACCESS GITHUB REPOSITORY</a>
+                      <a href="https://leetcode.com/u/Q3tQQteAio/" target="_blank" rel="noopener noreferrer" className="os-link" onMouseEnter={() => setHoverCursor(true)} onMouseLeave={() => setHoverCursor(false)}>&gt; QUERY LEETCODE DATABASE</a>
                       <a href="https://www.instagram.com/_farhan.who_/" target="_blank" rel="noopener noreferrer" className="os-link" onMouseEnter={() => setHoverCursor(true)} onMouseLeave={() => setHoverCursor(false)}>&gt; PING INSTAGRAM PROTOCOL</a>
                     </div>
                   )}

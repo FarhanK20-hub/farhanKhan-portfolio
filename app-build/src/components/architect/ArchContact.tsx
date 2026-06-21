@@ -26,8 +26,9 @@ export default function ArchContact() {
       await sendContactForm(formRef.current, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ARCH || '');
       setBtnText('[ TRANSMITTED ✓ ]');
       formRef.current.reset();
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+    } catch (error: unknown) {
+      const emailErr = error as { status?: number; text?: string };
+      console.error('EmailJS Error:', emailErr?.status, emailErr?.text, error);
       setBtnText('[ TRANSMISSION FAILED ]');
     } finally {
       setTimeout(() => {
@@ -52,15 +53,19 @@ export default function ArchContact() {
       <div className="contact-grid">
         <form ref={formRef} onSubmit={handleSubmit}>
           <div className="form-row">
-            <input className="form-input" type="text" name="name" placeholder="your name" required />
+            <input className="form-input" type="text" name="user_name" placeholder="your name" required />
             <label className="form-label">Name</label>
           </div>
           <div className="form-row">
-            <input className="form-input" type="email" name="email" placeholder="you@domain.com" required />
+            <input className="form-input" type="email" name="user_email" placeholder="you@domain.com" required />
             <label className="form-label">Email</label>
           </div>
           <div className="form-row">
-            <input className="form-input" type="text" name="subject" placeholder="RE: Let's build something" required />
+            <input className="form-input" type="tel" name="user_mobile" placeholder="+91 XXXXX XXXXX" />
+            <label className="form-label">Mobile</label>
+          </div>
+          <div className="form-row">
+            <input className="form-input" type="text" name="user_subject" placeholder="RE: Let's build something" required />
             <label className="form-label">Subject</label>
           </div>
           <div className="form-row">
@@ -92,8 +97,9 @@ export default function ArchContact() {
             {[
               { name: 'GitHub', url: 'https://github.com/FarhanK20-hub', stats: '100+ Contributions · 20+ Projects · 4+ SaaS' },
               { name: 'LinkedIn', url: 'https://www.linkedin.com/in/farhan-khan-3aa5442b0/', stats: '1.5k+ Followers · 43k+ Impressions' },
+              { name: 'LeetCode', url: 'https://leetcode.com/u/Q3tQQteAio/', stats: 'DSA · Problem Solving' },
               { name: 'Instagram', url: 'https://www.instagram.com/_farhan.who_/', stats: '1.7k+ Followers · 1.9M+ Views' },
-              { name: 'Resume PDF', url: '/resume-placeholder.pdf', stats: 'Latest 2026 Version' }
+              { name: 'Resume PDF', url: '/Farhan_Khan.pdf', stats: 'Latest 2026 Version' }
             ].map(social => (
               <a 
                 key={social.name} 

@@ -13,6 +13,8 @@ A highly immersive, dual-persona portfolio built for Farhan Khan, an ML Engineer
 - **Storyteller AI:** A cinematic, brooding AI assistant on the Storyteller side that answers questions about Farhan's creative vision.
 - **Custom Hardware-Accelerated Physics:** Features an interactive GPU-accelerated Particle Canvas and a global Custom Cursor with contextual magnetic snapping.
 - **Dynamic Live Stats:** Animated, Framer Motion powered live counters for social statistics and metrics.
+- **Cinematic Soundtrack:** Integrated floating Radio Widget with continuous background playback across modes.
+- **Dynamic Gate System:** Intelligent entry screen that adapts greetings based precisely on the user's local time.
 - **Real-Time Communications:** Fully integrated contact form using EmailJS.
 
 ## 🛠 Tech Stack

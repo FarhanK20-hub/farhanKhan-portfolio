@@ -11,14 +11,32 @@ export default function GateScreen() {
   const [phase, setPhase] = useState(0);
 
   const [messages] = useState(() => {
-    // Only access Date on client to avoid hydration mismatches, but since this is client-only component with a full replacement of initial render, it's fine.
     const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) {
-      return ["Good Morning.", "Opportunity doesn't wait."];
-    } else if (hour >= 12 && hour < 20) {
-      return ["Good Afternoon.", "Progress isn't accidental."];
+    
+    if (hour === 0) {
+      return ["Midnight.", "The world is asleep. You're not."];
+    } else if (hour >= 1 && hour < 4) {
+      return ["Deep in the night.", "Quiet hours breed the loudest results."];
+    } else if (hour >= 4 && hour < 6) {
+      return ["Dawn is breaking.", "First light, first advantage."];
+    } else if (hour >= 6 && hour < 8) {
+      return ["Good Morning.", "Sunrise is a head start."];
+    } else if (hour >= 8 && hour < 11) {
+      return ["Good Morning.", "The day is in motion."];
+    } else if (hour === 11) {
+      return ["Almost noon.", "Momentum is everything."];
+    } else if (hour === 12) {
+      return ["Midday.", "The sun is at its peak."];
+    } else if (hour >= 13 && hour < 16) {
+      return ["Good Afternoon.", "Keep the pace."];
+    } else if (hour === 16) {
+      return ["Late Afternoon.", "The day is closing, the work isn't."];
+    } else if (hour === 17) {
+      return ["Dusk.", "The shadows are lengthening."];
+    } else if (hour >= 18 && hour < 21) {
+      return ["Good Evening.", "The day's noise fades. Focus remains."];
     } else {
-      return ["Still awake?", "The competition probably is too."];
+      return ["Night has fallen.", "The best work happens in the dark."];
     }
   });
 
