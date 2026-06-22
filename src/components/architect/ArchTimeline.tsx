@@ -8,11 +8,11 @@ import { useTitleGlitch } from '@/hooks/useGlitch';
 
 export default function ArchTimeline() {
   const { setHoverCursor } = useNavigation();
-  const { text: titleText, triggerGlitch, stopGlitch } = useTitleGlitch('Beyond Code');
+  const { text: titleText, triggerGlitch, stopGlitch } = useTitleGlitch('The Journey');
 
   return (
     <RevealOnScroll className="arch-sec bg-void" id="arch-timeline">
-      <div className="sec-eyebrow">03 — BEYOND CODE</div>
+      <div className="sec-eyebrow">03 — THE JOURNEY</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}

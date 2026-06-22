@@ -10,7 +10,7 @@ export default function ArchFooter() {
   return (
     <footer className="arch-footer" style={{ paddingBottom: showNotes ? '120px' : '40px', transition: 'padding 0.8s ease' }}>
       <div className="footer-text">
-        FARHAN KHAN <span className="footer-dot">·</span> BUILT WITH INTENT <span className="footer-dot">·</span> {new Date().getFullYear()}
+        FARHAN KHAN <span className="footer-dot">·</span> DESIGNED WITH PURPOSE <span className="footer-dot">·</span> {new Date().getFullYear()}
       </div>
       <div 
         className="footer-text" 
@@ -46,7 +46,7 @@ export default function ArchFooter() {
                 SYSTEM.ARCHITECTURE.NOTES
               </div>
               <p style={{ fontFamily: 'var(--font-space)', fontSize: '13px', color: '#888', lineHeight: 1.8, marginBottom: '12px' }}>
-                You found it. I built this portfolio to reflect how I approach software engineering: systematic, performant, and intentional.
+                You found it. I built this portfolio to reflect how I approach software engineering: systematic, performant, and intentional. No templates, no bloat.
               </p>
               <ul style={{ fontFamily: 'var(--font-space)', fontSize: '13px', color: '#777', lineHeight: 1.8, listStyle: 'none', padding: 0 }}>
                 <li style={{ marginBottom: '8px' }}><span style={{ color: '#444' }}>&gt;</span> <strong>Tech Stack:</strong> Next.js App Router for server-side optimizations, Framer Motion for GPU-accelerated micro-interactions.</li>

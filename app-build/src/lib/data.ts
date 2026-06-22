@@ -4,22 +4,22 @@ import { SkillsMap, Project, TimelineItem, WorkItem, Certificate } from '@/types
 // ARCHITECT — Typewriter words
 // ══════════════════════════════════════
 export const TYPEWRITER_WORDS = [
-  'ML Engineer',
+  'ML Engineer & Systems Thinker',
   'Full-Stack Developer',
-  'Cloud Architect',
-  'Problem Eliminator',
-  'Builder of Inevitable Things',
+  'Creative Technologist',
+  'Founder, FRK Productions',
+  'Builder of Things That Last',
 ];
 
 // ══════════════════════════════════════
 // STORYTELLER — Rotating quotes
 // ══════════════════════════════════════
 export const STORY_QUOTES = [
-  'Every frame is a decision.',
-  'Light is the language.',
-  'Silence speaks loudest.',
-  'The cut is the truth.',
-  'Story outlives everything.',
+  'Every frame is a deliberate act.',
+  'Light tells what words cannot.',
+  'The silence between cuts carries the meaning.',
+  'A good story doesn\u2019t end when the screen goes dark.',
+  'We don\u2019t create content. We create memory.',
 ];
 
 // ══════════════════════════════════════
@@ -146,7 +146,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Explainable AI for chronic kidney disease risk assessment',
     badge: 'HEALTHCARE AI',
     badgeClass: 'badge-deployed',
-    desc: 'A full-stack clinical decision support platform that predicts Chronic Kidney Disease risk from patient laboratory panels using an XGBoost inference engine and SHAP-based explainability. Designed for clinicians, the system provides transparent risk scoring, feature-level reasoning, personalized care guidance, bulk patient triage, and PDF clinical reporting through an intuitive medical-grade interface.',
+    desc: 'Clinicians needed a way to catch chronic kidney disease early, before symptoms become irreversible. NephroSense turns 24 routine lab values into an actionable risk score using XGBoost, then explains exactly why each prediction was made through SHAP-based reasoning. The result: faster clinical decisions, personalised care guidance, bulk patient triage, and exportable PDF reports, all through a medical-grade interface designed for trust.',
     metrics: [
       { v: '24', k: 'Clinical Features' },
       { v: 'SHAP', k: 'Explainability' },
@@ -163,7 +163,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Blockchain-powered transparent election infrastructure',
     badge: 'WEB3',
     badgeClass: 'badge-deployed',
-    desc: 'A decentralized voting platform built on Ethereum that guarantees vote integrity through immutable smart contracts and on-chain verification. The system combines Solidity contracts, wallet-based authentication, election lifecycle management, voter registries, event indexing, and real-time result visualization to deliver a transparent and auditable digital election experience.',
+    desc: 'Elections demand trust, and traditional systems struggle to provide it. BlockVote moves the entire voting process on-chain using Ethereum smart contracts, every vote is immutable, every result is publicly auditable. The platform handles wallet-based authentication, election lifecycle management, voter registries, and real-time result visualisation to deliver elections people can actually believe in.',
     metrics: [
       { v: '100%', k: 'On-Chain Votes' },
       { v: 'JWT', k: 'Wallet Auth' },
@@ -180,7 +180,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Industrial computer vision for automated quality assurance',
     badge: 'COMPUTER VISION',
     badgeClass: 'badge-deployed',
-    desc: 'Developed during an internship at Tata Steel, this production-grade inspection platform uses a custom-trained YOLOv8 model to detect and classify steel surface defects in real time. The system combines defect localization, severity scoring, Grad-CAM explainability, PDF report generation, heatmap visualization, batch inspection workflows, and a control-room dashboard designed for manufacturing environments.',
+    desc: 'Steel plants lose millions to undetected surface defects. Built during an internship at Tata Steel, this system replaces manual inspection with a custom-trained YOLOv8 model that identifies and classifies six types of defects in real time. Grad-CAM explainability shows inspectors exactly what the model sees, while batch workflows, heatmap visualisation, and PDF reporting make it production-ready for the factory floor.',
     metrics: [
       { v: '87.3%', k: 'mAP@50' },
       { v: '~120ms', k: 'Inference' },
@@ -198,7 +198,7 @@ export const PROJECTS: Project[] = [
     tagline: 'AI-powered workout intelligence platform',
     badge: 'AI SAAS',
     badgeClass: 'badge-deployed',
-    desc: 'A full-stack fitness intelligence platform that acts as a personalized AI coach. The system tracks recovery across muscle groups, calculates readiness scores, generates adaptive training sessions, detects strength plateaus, and delivers conversational coaching through Claude AI integration while maintaining a zero-configuration deployment experience.',
+    desc: 'Most fitness apps track reps. FitMind understands recovery. It monitors fatigue across muscle groups, calculates daily readiness scores, detects strength plateaus before they stall progress, and generates adaptive training sessions, all guided by a conversational AI coach powered by Claude. The result is a fitness platform that thinks with you, not just for you.',
     metrics: [
       { v: 'AI', k: 'Workout Coach' },
       { v: '3D', k: 'Recovery Tracking' },
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Predictive workforce retention intelligence',
     badge: 'ENTERPRISE AI',
     badgeClass: 'badge-deployed',
-    desc: 'An AI-powered HR analytics platform that predicts employee attrition risk using a calibrated stacking ensemble of six machine learning models. The platform transforms workforce data into actionable retention insights through risk scoring, behavioral flag detection, explainable recommendations, threshold tuning, and executive reporting dashboards.',
+    desc: 'Losing talent is expensive, and most companies only realise it after the resignation email. AttritionAI predicts which employees are at risk of leaving before they decide to, using a calibrated stacking ensemble of six ML models. HR teams get risk scores, behavioural flags, explainable retention recommendations, and executive dashboards that turn workforce data into decisions.',
     metrics: [
       { v: '89%', k: 'Accuracy' },
       { v: '0.92', k: 'AUC-ROC' },
@@ -224,6 +224,7 @@ export const PROJECTS: Project[] = [
     stack: ['FastAPI', 'React', 'XGBoost', 'LightGBM', 'CatBoost', 'scikit-learn'],
     links: [
       { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/AttritionAI-Employee-Attrition-Prediction-System' },
+      { label: 'Live Demo', url: 'https://attrition-ai-employee-attrition-pre.vercel.app/' },
     ],
   },
   {
@@ -232,7 +233,7 @@ export const PROJECTS: Project[] = [
     tagline: 'AI-powered dermatology screening and skin analysis',
     badge: 'HEALTHCARE AI',
     badgeClass: 'badge-deployed',
-    desc: 'An intelligent skin health assessment platform that leverages computer vision and machine learning to analyse skin conditions from uploaded images and generate preliminary diagnostic insights. The system combines automated image analysis, risk assessment, educational guidance, and user-friendly reporting to improve accessibility to early dermatological screening.',
+    desc: 'Dermatology appointments can take weeks. This platform gives users an immediate preliminary assessment by analysing uploaded skin images through computer vision and machine learning. It identifies potential conditions, provides risk-level context, and offers educational guidance, making early screening accessible to anyone with a smartphone, not just those with a specialist on speed dial.',
     metrics: [
       { v: 'AI', k: 'Image Analysis' },
       { v: 'CV', k: 'Detection Engine' },
@@ -249,7 +250,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Luxury fashion commerce with cinematic storytelling',
     badge: 'FULL STACK',
     badgeClass: 'badge-deployed',
-    desc: 'A premium luxury-commerce platform engineered with Java Servlets and MySQL, combining enterprise-grade backend architecture with cinematic frontend experiences. The application features dynamic product catalogues, shopping workflows, custom cursor interactions, editorial animations, and accessibility-aware motion systems inspired by luxury fashion brands.',
+    desc: 'Luxury brands deserve digital experiences that match their craftsmanship. FRK Collectives is a fashion commerce platform where enterprise-grade Java backend architecture meets cinematic frontend storytelling, dynamic catalogues, editorial animations, custom cursor interactions, and accessibility-aware motion systems all working together to make online shopping feel like stepping into a flagship store.',
     metrics: [
       { v: 'Java', k: 'Backend Core' },
       { v: 'GSAP', k: 'Motion System' },
@@ -266,7 +267,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Sustainability-focused enterprise commerce experience',
     badge: 'NEXT.JS',
     badgeClass: 'badge-deployed',
-    desc: 'A premium digital experience built for a sustainable stationery brand, combining immersive ASMR-inspired interactions, dynamic ESG impact visualizations, and a secure MongoDB-backed administration system. The platform demonstrates how enterprise sustainability products can be presented through modern storytelling and high-performance web experiences.',
+    desc: 'Sustainability products deserve more than a standard e-commerce page. Kanecraft Web turns ESG impact data into interactive visualisations, wraps the shopping experience in ASMR-inspired micro-interactions, and gives the brand full control through a MongoDB-backed admin system, proving that sustainable commerce and premium digital storytelling can coexist.',
     metrics: [
       { v: 'ESG', k: 'Calculator' },
       { v: 'CMS', k: 'Admin Panel' },
@@ -283,7 +284,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Real-time messaging and collaboration platform',
     badge: 'FULL STACK',
     badgeClass: 'badge-deployed',
-    desc: 'A modern full-stack communication platform enabling real-time messaging, secure authentication, media sharing, online presence tracking, and responsive cross-device experiences. Built around event-driven architecture using WebSockets to deliver low-latency communication and seamless user interactions.',
+    desc: 'Communication tools should feel instant. ConnectX is a full-stack messaging platform built on WebSocket-driven architecture, real-time messaging, JWT-secured authentication, media sharing, and live presence tracking, all working seamlessly across devices. Every interaction is designed to feel immediate because the architecture behind it actually is.',
     metrics: [
       { v: 'Real-Time', k: 'Messaging' },
       { v: 'JWT', k: 'Authentication' },
@@ -300,7 +301,7 @@ export const PROJECTS: Project[] = [
     tagline: 'Native Android food ordering experience',
     badge: 'ANDROID',
     badgeClass: 'badge-deployed',
-    desc: 'A native Android food-ordering application focused on usability, performance, and streamlined checkout experiences. The platform enables menu exploration, cart management, order tracking, and local order history while maintaining a clean mobile-first interface built with modern Android development practices.',
+    desc: 'A native Android application that strips food ordering down to what matters, fast menu discovery, frictionless checkout, and reliable order tracking. Built with Kotlin and Firebase, the app prioritises speed and simplicity over feature bloat, delivering a clean mobile-first experience that gets out of the user\'s way.',
     metrics: [
       { v: 'Firebase', k: 'Backend' },
       { v: 'MVC', k: 'Architecture' },
@@ -324,7 +325,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'BCA (Hons.) with Research',
     org: 'Symbiosis International University · Pune',
     detail:
-      'Specialising in AI, cloud computing, and software engineering while building production-grade applications spanning machine learning, computer vision, blockchain, and full-stack development.',
+      'Specialising in AI, cloud computing, and software engineering, while independently building production-grade systems across machine learning, computer vision, blockchain, and full-stack development. Not waiting for the degree to start shipping.',
   },
   {
     period: '2026',
@@ -332,7 +333,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'Data Science & AI/ML Intern',
     org: 'Tata Motors · Jamshedpur',
     detail:
-      'Worked on real-world AI and machine learning solutions, contributing to data preprocessing, predictive modelling, and analytics pipelines. Collaborated with engineering teams to transform operational data into actionable business insights.',
+      'Applied AI and machine learning to real operational challenges, building predictive models, designing analytics pipelines, and transforming raw manufacturing data into insights that engineering teams could act on.',
   },
 
   {
@@ -341,7 +342,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'Machine Learning Intern',
     org: 'HyBionics · Hyderabad',
     detail:
-      'Contributed to AI-powered fall detection systems for next-generation smart prosthetics. Designed dataset structures, defined sensor sanity checks, analysed gait patterns, and supported the development of machine learning pipelines for fall prediction.',
+      'Contributed to AI-powered fall detection for next-generation smart prosthetics. Designed dataset architectures, built sensor validation pipelines, analysed gait patterns, and helped develop the ML systems that could one day prevent real injuries.',
   },
 
   {
@@ -350,7 +351,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'AI/ML Engineer Intern',
     org: 'Tata Steel · Jamshedpur',
     detail:
-      'Independently built an industrial computer vision platform for automated steel surface defect detection using a custom-trained YOLO model. Delivered the complete solution from dataset preparation and model training to React frontend integration and deployment.',
+      'Independently designed and delivered a complete industrial computer vision system, from custom YOLO model training on steel surface defects to a React-powered inspection dashboard. Owned the entire pipeline: dataset preparation, model architecture, frontend integration, and deployment.',
   },
 
   {
@@ -359,7 +360,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'Project Administrator',
     org: 'GirlScript Summer of Code',
     detail:
-      'Led contributor coordination across open-source projects, reviewed pull requests, mentored developers, improved documentation, and streamlined collaboration workflows between maintainers and contributors.',
+      'Led contributor coordination across open-source projects, reviewing pull requests, mentoring developers, improving documentation, and building the systems that helped maintainers and contributors work better together.',
   },
 
   {
@@ -368,7 +369,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'Campus Ambassador',
     org: 'GirlScript Summer of Code',
     detail:
-      'Represented the open-source community on campus, driving awareness, onboarding contributors, and connecting students with collaborative development opportunities and national-level initiatives.',
+      'Brought the open-source movement to campus, onboarding contributors, connecting students with collaborative development opportunities, and building bridges between local talent and national-level initiatives.',
   },
 
   {
@@ -377,7 +378,7 @@ export const TIMELINE: TimelineItem[] = [
     title: 'Open Source Contributor',
     org: 'GirlScript Summer of Code',
     detail:
-      'Contributed to community-driven software projects, collaborated with developers across diverse teams, and gained hands-on experience with large-scale open-source development practices.',
+      'Shipped code to community-driven projects, collaborated with developers across diverse teams, and learned firsthand what it takes to build software at scale with people you have never met.',
   },
 ]
 // ══════════════════════════════════════

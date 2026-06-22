@@ -76,8 +76,8 @@ export default function ArchHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.65 }}
         >
-          I don&apos;t just build systems.<br />
-          <em>I make them inevitable.</em>
+          I build the systems people depend on.<br />
+          <em>From machine intelligence to production-grade platforms.</em>
         </motion.div>
 
         <motion.div
@@ -105,7 +105,7 @@ export default function ArchHero() {
             onMouseEnter={() => setHoverCursor(true, 'ENTER')}
             onMouseLeave={() => setHoverCursor(false)}
           >
-            [ ENTER THE STACK ]
+            [ EXPLORE THE WORK ]
           </a>
           <div className="hero-scroll-link">↓ SCROLL</div>
         </motion.div>

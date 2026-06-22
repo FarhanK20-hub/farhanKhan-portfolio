@@ -80,11 +80,11 @@ export default function ArchAbout() {
       <div className="about-grid" ref={ref} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px', alignItems: 'center' }}>
         <div>
           <div className="pull-quote">
-            &quot;I build systems that are fast, precise,<br />and built to <strong>last</strong>.&quot;
+            &quot;I don&apos;t just write code.<br />I solve problems that <strong>matter</strong>.&quot;
           </div>
-          <p className="body-text">I&apos;m a machine learning engineer and full-stack developer who lives at the intersection of elegant code and real-world impact. Every system I build is designed to be not just functional, but inevitable, the kind of solution that makes you wonder how you ever did without it.</p>
-          <p className="body-text">From training neural networks for medical diagnostics to architecting blockchain platforms, I bring the same obsessive precision to every layer of the stack. Clean abstractions. Ruthless optimization. Zero tolerance for technical debt.</p>
-          <p className="body-text">Currently pursuing <span className="hero-name-word">BCA (Hons.) with Research</span> at Symbiosis Institute of Technology (Symbiosis International University), Pune, building at the intersection of machine intelligence and systems design.</p>
+          <p className="body-text">I&apos;m a machine learning engineer, full-stack developer, and the founder of FRK Productions. My work lives at the intersection of elegant code, artificial intelligence, and human-centric storytelling. I build systems that don&apos;t just function perfectly, but feel inevitable, the kind of solutions that make you wonder how you ever worked without them.</p>
+          <p className="body-text">From training neural networks for early disease detection to architecting blockchain platforms and leading creative communities, I bring the same obsessive precision to every layer of the stack. I don&apos;t separate the logic of the code from the experience of the user.</p>
+          <p className="body-text">Currently pursuing a <span className="hero-name-word">BCA (Hons.) with Research</span> at Symbiosis Institute of Technology (Symbiosis International University), Pune, where I&apos;m pushing the boundaries of what student-led engineering can achieve.</p>
         </div>
 
         <div style={{ position: 'relative' }}>

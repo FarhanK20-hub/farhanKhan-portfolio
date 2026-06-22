@@ -24,7 +24,7 @@ export default function RecruiterView() {
       <header className="rv-header">
         <div>
           <h1 className="rv-name">Farhan Khan</h1>
-          <p className="rv-title">ML Engineer · Full-Stack Developer · Cloud Architect</p>
+          <p className="rv-title">ML Engineer · Full-Stack Developer · Creative Technologist</p>
         </div>
         <div className="rv-links">
           <a href="mailto:devrevolutionx@gmail.com" target="_blank" rel="noopener noreferrer" className="rv-link"

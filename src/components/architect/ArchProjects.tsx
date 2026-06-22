@@ -58,7 +58,7 @@ export default function ArchProjects() {
       <div className="arch-live-stats" style={{ display: 'flex', gap: '40px', justifyContent: 'center', margin: '40px 0', fontFamily: 'var(--font-jetbrains)' }}>
          <div className="arch-stat-box" style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={100} duration={2} />+</div>
-            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>CONTRIBUTIONS/YR</div>
+            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>CONTRIBUTIONS / YEAR</div>
          </div>
          <div className="arch-stat-box" style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={20} duration={2} />+</div>
@@ -66,7 +66,7 @@ export default function ArchProjects() {
          </div>
          <div className="arch-stat-box" style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '32px', color: '#00FF94', fontWeight: 'bold' }}><LiveCounter to={4} duration={2} />+</div>
-            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>SAAS SHIPPED</div>
+            <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>PRODUCTS SHIPPED</div>
          </div>
       </div>
       

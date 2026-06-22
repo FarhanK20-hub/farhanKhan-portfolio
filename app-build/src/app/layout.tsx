@@ -20,8 +20,22 @@ const cormorantGaramond = Cormorant_Garamond({
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500'], variable: '--font-inter', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Farhan Khan — Portfolio',
-  description: 'Built with intent.',
+  title: 'Farhan Khan — Developer, Storyteller & Creative Technologist',
+  description: 'Farhan Khan builds intelligent systems, tells cinematic stories, and leads creative communities. ML Engineer, Full-Stack Developer, and founder of FRK Productions — explore the work.',
+  keywords: ['Farhan Khan', 'Farhan Khan Portfolio', 'Farhan Khan Developer', 'Full Stack Developer', 'Next.js Developer', 'ML Engineer', 'Creative Technologist', 'Storyteller', 'Community Builder', 'FRK Productions'],
+  authors: [{ name: 'Farhan Khan' }],
+  openGraph: {
+    title: 'Farhan Khan — Developer, Storyteller & Creative Technologist',
+    description: 'ML Engineer and Full-Stack Developer who builds production-grade AI systems, crafts cinematic visual stories, and leads FRK Productions — a community of creators across India.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Farhan Khan Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Farhan Khan — Developer, Storyteller & Creative Technologist',
+    description: 'ML Engineer and Full-Stack Developer who builds production-grade AI systems, crafts cinematic visual stories, and leads FRK Productions.',
+  },
 };
 
 export default function RootLayout({

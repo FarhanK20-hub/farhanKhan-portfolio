@@ -15,16 +15,16 @@ const QUESTIONS = [
 
 const ANSWERS: Record<string, string> = {
   "Who is the storyteller?":
-    "Farhan Khan. Director. Cinematographer. Editor. But labels feel thin for what he actually does — he translates emotion into moving image. Under FRK Productions, he's crafted reels with 1.2M+ views, cinematic edits that stop thumbs mid-scroll, and visual work that makes clients feel something before they even read the brief. He doesn't make content. He makes moments.",
+    "Farhan Khan. Director. Cinematographer. Editor. But labels feel thin for what he actually does, he translates emotion into moving image. Under FRK Productions, he's crafted reels with 1.2M+ views, cinematic edits that stop thumbs mid-scroll, and visual work that makes clients feel something before they even read the brief. He doesn't make content. He makes moments.",
 
   "What's his filmmaking style?":
-    "Farhan shoots with restraint and edits with intention. Influenced by slow cinema — long holds, natural light, rhythm over pace. He's drawn to the space between moments: the exhale after a laugh, the glance before a goodbye. Whether it's a 15-second reel or a short film, every frame earns its place. The result is work that feels less like it was produced, and more like it was found.",
+    "Farhan shoots with restraint and edits with intention. Influenced by slow cinema, long holds, natural light, rhythm over pace. He's drawn to the space between moments: the exhale after a laugh, the glance before a goodbye. Whether it's a 15-second reel or a short film, every frame earns its place. The result is work that feels less like it was produced, and more like it was found.",
 
   "What tools does he use?":
-    "On set: Sony mirrorless systems, prime lenses, natural and motivated light. In post: DaVinci Resolve for color grading, Premiere Pro for editorial, After Effects for motion. For 3D work and cinematic sequences — Unreal Engine. His Reels and Edits have combined for millions of views across platforms. The tools vary. The eye doesn't.",
+    "On set: Sony mirrorless systems, prime lenses, natural and motivated light. In post: DaVinci Resolve for color grading, Premiere Pro for editorial, After Effects for motion. For 3D work and cinematic sequences, Unreal Engine. His Reels and Edits have combined for millions of views across platforms. The tools vary. The eye doesn't.",
 
   "Can we collaborate?":
-    "Yes — and he's selective about it. Farhan works with brands, artists, and projects that have something to say. If your vision deserves to be seen, scroll down to the contact section and tell him about it. He responds to good stories. Whether that's a brand film, a music video, a cinematic reel, or something that doesn't have a name yet — bring the idea. He'll bring the camera.",
+    "Yes, and he's selective about it. Farhan works with brands, artists, and projects that have something to say. If your vision deserves to be seen, scroll down to the contact section and tell him about it. He responds to good stories. Whether that's a brand film, a music video, a cinematic reel, or something that doesn't have a name yet, bring the idea. He'll bring the camera.",
 };
 
 export default function StoryAI() {
@@ -53,7 +53,7 @@ let nextStoryMsgId = 100;
 
     setTimeout(() => {
       const aiMsgId = String(nextStoryMsgId++);
-      const aiResponse = ANSWERS[q] || "Cut. Let's try that again — ask me something about the work.";
+      const aiResponse = ANSWERS[q] || "Cut. Let's try that again, ask me something about the work.";
 
       setMessages(prev => [...prev, { id: aiMsgId, role: 'ai', text: '', isStreaming: true }]);
 

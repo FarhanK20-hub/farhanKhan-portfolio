@@ -14,13 +14,13 @@ const QUESTIONS = [
 ];
 
 const ANSWERS: Record<string, string> = {
-  "Who is Farhan?": "Let me be direct. Farhan isn't a student who codes on the side. He's an ML Engineer, Full-Stack Developer, and Cloud Architect who happens to also be pursuing a BCA (Honours with Research) at Symbiosis Institute of Technology. He's shipped AI systems for Tata Steel, built prosthetics intelligence at HyBionics, and done data science at Tata Motors. Most people his age are still figuring out what to major in.",
+  "Who is Farhan?": "Farhan is an ML Engineer, Full-Stack Developer, and Creative Technologist. He also founded FRK Productions to build a community around creative storytelling. He's shipped AI systems for Tata Steel, built prosthetics intelligence at HyBionics, and done data science at Tata Motors. Oh, and he's still an undergraduate pursuing a BCA (Honours with Research) at Symbiosis Institute of Technology.",
 
-  "What has he built?": "Ten production-grade systems. NephroSense — an XGBoost-powered clinical platform for Chronic Kidney Disease detection. BlockVote — a fully on-chain Ethereum voting infrastructure. A YOLOv8 defect detection system built during his Tata Steel internship. AttritionAI — a stacking ensemble of six ML models with 89% accuracy. And that's not even half of it. Scroll through the projects. Each one has a GitHub link.",
+  "What has he built?": "Ten production-grade systems focused on real human problems. NephroSense helps clinicians catch kidney disease early. BlockVote makes elections transparent and verifiable. FitMind acts as a recovery-focused AI fitness coach. AttritionAI helps HR teams prevent talent loss. He builds the systems people depend on. Scroll through the projects. Each one has a GitHub link.",
 
-  "Show his experience?": "Three internships. Tata Steel in 2025 as an AI/ML Engineer, where he independently built a computer vision system for steel surface defect detection. HyBionics in 2026 as a Machine Learning Intern, contributing to fall-detection AI for smart prosthetics. Tata Motors in 2026 for Data Science and AI/ML. He also served as a Project Administrator and Campus Ambassador for GirlScript Summer of Code. The résumé speaks for itself.",
+  "Show his experience?": "Three internships. Tata Steel in 2025 as an AI/ML Engineer, where he independently built a computer vision system for steel surface defect detection. HyBionics in 2026 as a Machine Learning Intern, contributing to fall-detection AI for smart prosthetics. Tata Motors in 2026 for Data Science and AI/ML. He also leads open-source initiatives for GirlScript Summer of Code. The résumé speaks for itself.",
 
-  "Any secrets here?": "Since you asked — yes.\n\n⌨  Type \"hire farhan\" anywhere on the page and see what happens.\n\n>_  Type \"boot os\" to access FarhanOS — a hidden terminal interface.\n\nI'd tell you more, but then it wouldn't be a secret."
+  "Any secrets here?": "Since you asked, yes.\n\n⌨  Type \"hire farhan\" anywhere on the page and see what happens.\n\n>_  Type \"boot os\" to access FarhanOS, a hidden terminal interface.\n\nI'd tell you more, but then it wouldn't be a secret."
 };
 
 export default function AIAssistant() {

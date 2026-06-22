@@ -14,29 +14,29 @@ export default function GateScreen() {
     const hour = new Date().getHours();
     
     if (hour === 0) {
-      return ["Midnight.", "The world is asleep. You're not."];
+      return ["Midnight.", "The world sleeps. You\u2019re still here."];
     } else if (hour >= 1 && hour < 4) {
-      return ["Deep in the night.", "Quiet hours breed the loudest results."];
+      return ["Deep night.", "The quietest hours build the loudest work."];
     } else if (hour >= 4 && hour < 6) {
-      return ["Dawn is breaking.", "First light, first advantage."];
+      return ["Almost dawn.", "First light belongs to those who didn\u2019t stop."];
     } else if (hour >= 6 && hour < 8) {
-      return ["Good Morning.", "Sunrise is a head start."];
+      return ["Good morning.", "The day hasn\u2019t been claimed yet."];
     } else if (hour >= 8 && hour < 11) {
-      return ["Good Morning.", "The day is in motion."];
+      return ["Morning.", "Momentum starts with showing up."];
     } else if (hour === 11) {
-      return ["Almost noon.", "Momentum is everything."];
+      return ["Almost noon.", "Halfway there. Keep building."];
     } else if (hour === 12) {
-      return ["Midday.", "The sun is at its peak."];
+      return ["Midday.", "The sun is overhead. So is the opportunity."];
     } else if (hour >= 13 && hour < 16) {
-      return ["Good Afternoon.", "Keep the pace."];
+      return ["Afternoon.", "Good work doesn\u2019t watch the clock."];
     } else if (hour === 16) {
-      return ["Late Afternoon.", "The day is closing, the work isn't."];
+      return ["Late afternoon.", "The day is closing. The work isn\u2019t."];
     } else if (hour === 17) {
-      return ["Dusk.", "The shadows are lengthening."];
+      return ["Dusk.", "The golden hour, for cameras and for code."];
     } else if (hour >= 18 && hour < 21) {
-      return ["Good Evening.", "The day's noise fades. Focus remains."];
+      return ["Good evening.", "The noise fades. Focus sharpens."];
     } else {
-      return ["Night has fallen.", "The best work happens in the dark."];
+      return ["Night.", "Some of the best things are built in the dark."];
     }
   });
 
@@ -126,7 +126,7 @@ export default function GateScreen() {
                 transition={{ duration: 0.9, delay: 0.3 }}
                 className="gate-eyebrow"
               >
-                SILENCE IS LOADING.
+                SOMETHING IS LOADING.
               </motion.div>
               
               <motion.div

@@ -6,9 +6,9 @@ import gsap from 'gsap';
 import { playStartupSound } from '@/lib/sound';
 
 const lines = [
-  "SOME PEOPLE MAKE CONTENT.",
-  "SOME TELL STORIES.",
-  "SOME MAKE YOU FEEL."
+  "ANYONE CAN POINT A CAMERA.",
+  "FEW KNOW HOW TO MAKE YOU FEEL.",
+  "THIS IS WHERE THAT DIFFERENCE LIVES."
 ];
 
 export default function StoryIntro() {

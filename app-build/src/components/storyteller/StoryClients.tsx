@@ -22,7 +22,7 @@ export default function StoryClients() {
           <div><LiveCounter to={30} />K+ <span style={{ fontFamily: 'var(--font-inter)', fontSize: 'clamp(12px, 2vw, 16px)', fontStyle: 'normal', letterSpacing: '0.15em', opacity: 0.8, verticalAlign: 'middle' }}>FOLLOWERS</span></div>
         </div>
         <div style={{ fontFamily: 'var(--font-inter)', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', opacity: 0.5, marginTop: '20px' }}>
-          Average Per Managed Profile
+          Across FRK Productions Collaborations
         </div>
       </div>
       <div className="clients-outer">

@@ -56,7 +56,7 @@ export default function StoryContact() {
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="story-eyebrow">04 — CONNECT</div>
-        <div className="story-sec-title">Let&apos;s talk vision.</div>
+        <div className="story-sec-title">Let&apos;s create something together.</div>
         <div className="story-rule"></div>
         
         <div className="story-contact-grid">
@@ -79,7 +79,7 @@ export default function StoryContact() {
             </div>
             <div className="sf-row">
               <label className="sf-label">Project Details</label>
-              <textarea className="sf-input" name="message" placeholder="Tell me about the story…" required></textarea>
+              <textarea className="sf-input" name="message" placeholder="Describe the project or story you have in mind…" required></textarea>
             </div>
             <button 
               type="submit" 

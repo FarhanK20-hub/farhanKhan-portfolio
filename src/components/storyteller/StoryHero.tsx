@@ -151,7 +151,7 @@ export default function StoryHero() {
           animate={{ opacity: phase >= 2 ? 1 : 0, y: phase >= 2 ? 0 : 16 }}
           transition={{ duration: 1.0, delay: 1.2, ease: 'easeOut' }}
         >
-          CINEMATOGRAPHER&nbsp;·&nbsp;EDITOR&nbsp;·&nbsp;VISUAL STORYTELLER
+          FILMMAKER&nbsp;·&nbsp;EDITOR&nbsp;·&nbsp;COMMUNITY BUILDER
         </motion.div>
 
         {/* Gold thin rule */}
@@ -188,7 +188,7 @@ export default function StoryHero() {
           onMouseEnter={() => setHoverCursor(true)}
           onMouseLeave={() => setHoverCursor(false)}
         >
-          ▶&nbsp;&nbsp;ENTER THE REEL
+          ▶&nbsp;&nbsp;EXPLORE THE WORK
         </motion.div>
 
         {/* Social Icons */}

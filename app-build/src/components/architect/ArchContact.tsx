@@ -13,7 +13,7 @@ export default function ArchContact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [btnText, setBtnText] = useState('[ TRANSMIT ]');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { text: titleText, triggerGlitch, stopGlitch } = useTitleGlitch("Let's Build Something");
+  const { text: titleText, triggerGlitch, stopGlitch } = useTitleGlitch("Let's Work Together");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ export default function ArchContact() {
 
   return (
     <RevealOnScroll className="arch-sec bg-alt" id="arch-contact">
-      <div className="sec-eyebrow">05 — LET&apos;S BUILD SOMETHING</div>
+      <div className="sec-eyebrow">05 — LET&apos;S WORK TOGETHER</div>
       <div 
         className="sec-title-arch"
         onMouseEnter={triggerGlitch}
@@ -69,7 +69,7 @@ export default function ArchContact() {
             <label className="form-label">Subject</label>
           </div>
           <div className="form-row">
-            <textarea className="form-input" name="message" placeholder="Describe the problem…" required></textarea>
+            <textarea className="form-input" name="message" placeholder="Tell me about your idea or challenge…" required></textarea>
             <label className="form-label">Message</label>
           </div>
           <button 

@@ -56,7 +56,7 @@ export default function ArchEntrance({ onComplete }: { onComplete: () => void })
             transition={{ duration: 1.2, ease: "easeOut" }}
             style={{ marginBottom: '1.5rem', color: '#888' }}
           >
-            Most people build projects.
+            Others follow tutorials.
           </motion.div>
           
           <motion.div
@@ -68,7 +68,7 @@ export default function ArchEntrance({ onComplete }: { onComplete: () => void })
             transition={{ duration: 1.2, ease: "easeOut" }}
             style={{ color: '#00FF94', fontWeight: 'bold' }}
           >
-            I build systems.
+            I ship products.
           </motion.div>
         </motion.div>
       )}

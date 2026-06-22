@@ -100,10 +100,10 @@ export default function StoryAbout() {
 
         <FilmStripDivider />
 
-        <PullQuote>I don&apos;t make content. I make moments.</PullQuote>
+        <PullQuote>We don't create for algorithms. We create for people.</PullQuote>
 
         <RevealLines className="story-para">
-          Under FRK Productions, I craft visual narratives for brands, artists, and stories that deserve to be seen. Every project begins with a single question: what do you want someone to carry with them long after the screen goes dark?
+          Under FRK Productions, I've built a community of filmmakers, designers, developers, and artists across India who believe in one thing: meaningful work made together. Every collaboration starts with a question, what story deserves to be told, and who needs to hear it?
         </RevealLines>
       </div>
 
