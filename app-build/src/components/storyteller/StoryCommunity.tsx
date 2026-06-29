@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import { useNavigation } from '@/context/NavigationContext';
 import { FaWhatsapp, FaDiscord, FaLinkedin, FaGlobe } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ export default function StoryCommunity() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { setHoverCursor } = useNavigation();
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +20,7 @@ export default function StoryCommunity() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
