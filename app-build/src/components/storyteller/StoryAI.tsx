@@ -4,27 +4,42 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigation } from '@/context/NavigationContext';
 
-type Message = { id: string; role: 'user' | 'ai'; text: string; isStreaming?: boolean };
+type Message = { id: string; role: 'user' | 'ai'; text: string; isStreaming?: boolean; links?: { label: string, url: string }[] };
 
 const QUESTIONS = [
   "Who is the storyteller?",
   "What's his filmmaking style?",
-  "What tools does he use?",
   "Can we collaborate?",
+  "How can I join the community?",
 ];
 
-const ANSWERS: Record<string, string> = {
-  "Who is the storyteller?":
-    "Farhan Khan. Director. Cinematographer. Editor. But labels feel thin for what he actually does, he translates emotion into moving image. Under FRK Productions, he's crafted reels with 1.2M+ views, cinematic edits that stop thumbs mid-scroll, and visual work that makes clients feel something before they even read the brief. He doesn't make content. He makes moments.",
+type AnswerData = { text: string; links?: { label: string, url: string }[] };
 
-  "What's his filmmaking style?":
-    "Farhan shoots with restraint and edits with intention. Influenced by slow cinema, long holds, natural light, rhythm over pace. He's drawn to the space between moments: the exhale after a laugh, the glance before a goodbye. Whether it's a 15-second reel or a short film, every frame earns its place. The result is work that feels less like it was produced, and more like it was found.",
-
-  "What tools does he use?":
-    "On set: Sony mirrorless systems, prime lenses, natural and motivated light. In post: DaVinci Resolve for color grading, Premiere Pro for editorial, After Effects for motion. For 3D work and cinematic sequences, Unreal Engine. His Reels and Edits have combined for millions of views across platforms. The tools vary. The eye doesn't.",
-
-  "Can we collaborate?":
-    "Yes, and he's selective about it. Farhan works with brands, artists, and projects that have something to say. If your vision deserves to be seen, scroll down to the contact section and tell him about it. He responds to good stories. Whether that's a brand film, a music video, a cinematic reel, or something that doesn't have a name yet, bring the idea. He'll bring the camera.",
+const ANSWERS: Record<string, AnswerData> = {
+  "Who is the storyteller?": { 
+    text: "Farhan Khan. Director. Cinematographer. Editor. But labels feel thin for what he actually does, he translates emotion into moving image. Under FRK Productions, he's crafted reels with 1.2M+ views, cinematic edits that stop thumbs mid-scroll, and visual work that makes clients feel something before they even read the brief. He doesn't make content. He makes moments." 
+  },
+  "What's his filmmaking style?": { 
+    text: "Farhan shoots with restraint and edits with intention. Influenced by slow cinema, long holds, natural light, rhythm over pace. He's drawn to the space between moments: the exhale after a laugh, the glance before a goodbye. Whether it's a 15-second reel or a short film, every frame earns its place. The result is work that feels less like it was produced, and more like it was found." 
+  },
+  "What tools does he use?": { 
+    text: "On set: Sony mirrorless systems, prime lenses, natural and motivated light. In post: DaVinci Resolve for color grading, Premiere Pro for editorial, After Effects for motion. For 3D work and cinematic sequences, Unreal Engine. His Reels and Edits have combined for millions of views across platforms. The tools vary. The eye doesn't." 
+  },
+  "Can we collaborate?": { 
+    text: "Yes, and he's selective about it. Farhan works with brands, artists, and projects that have something to say. If your vision deserves to be seen, scroll down to the contact section and tell him about it. He responds to good stories. If you're looking to connect, learn, and collaborate with other creators, you should join the FRK Productions Community.",
+    links: [
+      { label: "Join WhatsApp", url: "https://chat.whatsapp.com/IrOteZX7IYt0IrvtDS6xub" },
+      { label: "Join Discord", url: "https://discord.gg/HcHXWY8Rkw" }
+    ]
+  },
+  "How can I join the community?": {
+    text: "FRK Productions is more than just a portfolio. It's a growing ecosystem of filmmakers, designers, editors, and creators. We collaborate, share resources, and build meaningful projects together. There's a place for you whether you're a beginner or a veteran. Come say hi.",
+    links: [
+      { label: "WhatsApp Community", url: "https://chat.whatsapp.com/IrOteZX7IYt0IrvtDS6xub" },
+      { label: "Discord Server", url: "https://discord.gg/HcHXWY8Rkw" },
+      { label: "Follow on LinkedIn", url: "https://www.linkedin.com/company/frkproductions" }
+    ]
+  }
 };
 
 export default function StoryAI() {
@@ -53,9 +68,10 @@ let nextStoryMsgId = 100;
 
     setTimeout(() => {
       const aiMsgId = String(nextStoryMsgId++);
-      const aiResponse = ANSWERS[q] || "Cut. Let's try that again, ask me something about the work.";
+      const aiData = ANSWERS[q] || { text: "Cut. Let's try that again, ask me something about the work." };
+      const aiResponse = aiData.text;
 
-      setMessages(prev => [...prev, { id: aiMsgId, role: 'ai', text: '', isStreaming: true }]);
+      setMessages(prev => [...prev, { id: aiMsgId, role: 'ai', text: '', isStreaming: true, links: aiData.links }]);
 
       let i = 0;
       const interval = setInterval(() => {
@@ -127,6 +143,51 @@ let nextStoryMsgId = 100;
                   <div className="story-ai-msg-inner">
                     {msg.text}
                     {msg.isStreaming && <span className="story-ai-cursor">_</span>}
+                    {!msg.isStreaming && msg.links && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                        style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '12px' }}
+                      >
+                        {msg.links.map((link, i) => (
+                          <a 
+                            key={i} 
+                            href={link.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            style={{ 
+                              display: 'inline-flex', 
+                              alignItems: 'center',
+                              gap: '6px',
+                              padding: '8px 12px', 
+                              background: 'rgba(201,168,76,0.1)', 
+                              border: '1px solid rgba(201,168,76,0.3)', 
+                              borderRadius: '6px', 
+                              color: '#C9A84C', 
+                              fontFamily: 'var(--font-jetbrains)',
+                              fontSize: '9px', 
+                              letterSpacing: '0.1em',
+                              textTransform: 'uppercase',
+                              textDecoration: 'none',
+                              transition: 'all 0.3s'
+                            }} 
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background = 'rgba(201,168,76,0.2)';
+                              e.currentTarget.style.borderColor = 'rgba(201,168,76,0.6)';
+                              setHoverCursor(true, 'JOIN');
+                            }} 
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.background = 'rgba(201,168,76,0.1)';
+                              e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)';
+                              setHoverCursor(false);
+                            }}
+                          >
+                            {link.label} <span>↗</span>
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
                   </div>
                 </div>
               ))}

@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     title: 'Farhan Khan — Developer, Storyteller & Creative Technologist',
     description: 'ML Engineer and Full-Stack Developer who builds production-grade AI systems, crafts cinematic visual stories, and leads FRK Productions.',
   },
+  icons: {
+    icon: '/logo1.png',
+  },
 };
 
 export default function RootLayout({
