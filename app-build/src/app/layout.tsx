@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: 'ML Engineer and Full-Stack Developer who builds production-grade AI systems, crafts cinematic visual stories, and leads FRK Productions.',
   },
   icons: {
-    icon: '/logo1.png',
+    icon: '/photos/Frk_Productions_Community_logo-removebg-preview.png',
   },
 };
 
