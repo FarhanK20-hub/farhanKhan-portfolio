@@ -40,6 +40,14 @@ export default function StoryCommunity() {
           animate={isInView ? "visible" : "hidden"}
           className="community-inner"
         >
+          <motion.div variants={itemVariants} style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
+            <img 
+              src="/photos/Frk_Productions_Community_logo-removebg-preview.png" 
+              alt="FRK Productions Community Logo" 
+              style={{ maxHeight: '120px', width: 'auto', objectFit: 'contain' }}
+            />
+          </motion.div>
+          
           <motion.div variants={itemVariants} className="story-sec-title" style={{ color: '#C9A84C', textAlign: 'center', marginBottom: '24px', fontSize: 'clamp(32px, 5vw, 56px)' }}>
             More Than a Creator.<br />A Community.
           </motion.div>
