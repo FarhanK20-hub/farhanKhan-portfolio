@@ -312,7 +312,74 @@ export const PROJECTS: Project[] = [
       { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/Pizza-Delivery-App-Android-' },
     ],
   },
-
+  {
+    num: '11',
+    title: 'Money Tracker',
+    tagline: 'Local-first architecture for absolute privacy and zero-latency performance',
+    badge: 'WEB APP',
+    badgeClass: 'badge-deployed',
+    desc: 'A beautifully crafted, mobile-first web application designed for independently tracking personal and business finances. Built with a local-first architecture for absolute privacy and zero-latency performance. Features deep dark mode, smooth micro-interactions, and iOS automation API.',
+    metrics: [
+      { v: 'Zero', k: 'Latency' },
+      { v: 'Local', k: 'First Sync' },
+      { v: 'PWA', k: 'Ready' },
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS v4', 'localStorage', 'GitHub Gist API'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/Money-Tracker' },
+    ],
+  },
+  {
+    num: '12',
+    title: 'Adaptive LiDAR Mapping',
+    tagline: 'Adaptive Variable-Resolution 2.5D LiDAR Mapping for dynamic-environment perception',
+    badge: 'PERCEPTION / AI',
+    badgeClass: 'badge-deployed',
+    desc: 'A comprehensive prototype for dynamic-environment perception using Adaptive Variable-Resolution 2.5D LiDAR Mapping. Developed for the DRDO Smart India Hackathon. Features operational modes for Disaster Relief, Military Operations, and Research Dashboard with real-time Hungarian tracking.',
+    metrics: [
+      { v: '2.5D', k: 'LiDAR Mapping' },
+      { v: '3', k: 'Operational Modes' },
+      { v: 'Tracking', k: 'Hungarian + IMM Kalman' },
+    ],
+    stack: ['Python', 'Streamlit', 'Optuna', 'QuadTrees', 'KITTI'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/Adaptive-Variable-Resolution-LiDAR-Mapping' },
+    ],
+  },
+  {
+    num: '13',
+    title: 'System Diagnostics Toolkit',
+    tagline: 'Real-time system resource monitoring and network diagnostics',
+    badge: 'FULL STACK',
+    badgeClass: 'badge-deployed',
+    desc: 'A comprehensive platform for monitoring system resources and performing real-time network diagnostics. Designed with a modern React frontend and a blazing-fast FastAPI backend via WebSockets. Includes real-time metrics, historical data, and HTTP/DNS network health checks.',
+    metrics: [
+      { v: 'Real-Time', k: 'WebSockets' },
+      { v: 'Network', k: 'Diagnostics' },
+      { v: '50', k: 'Max Hops Traceroute' },
+    ],
+    stack: ['Python', 'FastAPI', 'Uvicorn', 'React', 'Vite', 'Recharts', 'SQLite'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/System-Diagnostics-Toolkit' },
+    ],
+  },
+  {
+    num: '14',
+    title: 'ClimaTwin India',
+    tagline: 'AI-Powered Digital Twin of India\'s Climate',
+    badge: 'AI / DIGITAL TWIN',
+    badgeClass: 'badge-deployed',
+    desc: 'An interactive, AI-powered digital twin of India\'s climate system designed to bridge the gap between raw meteorological data and actionable decision-making. Built for ISRO Hack2Skill 2026. Features LSTM predictions with Monte Carlo Dropout uncertainty and What-If scenario simulations.',
+    metrics: [
+      { v: 'MC Dropout', k: 'Uncertainty' },
+      { v: 'LSTM', k: 'Prediction' },
+      { v: '35', k: 'Years Synthetic Data' },
+    ],
+    stack: ['Python', 'FastAPI', 'PyTorch', 'Leaflet.js', 'Chart.js', 'Pandas'],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/FarhanK20-hub/ClimaTwin-India---AI-Powered-Digital-Twin-of-India-s-Climate' },
+    ],
+  },
 ];
 
 // ══════════════════════════════════════
@@ -781,5 +848,35 @@ export const CERTIFICATES: Certificate[] = [
     name: 'Vocational Training Program',
     issuer: 'Tata Steel',
     category: 'Industrial Training',
+  },
+  {
+    name: 'Critical thinking in the AI Era',
+    issuer: 'HP',
+    category: 'Professional Development',
+  },
+  {
+    name: 'Growth Engine for your business',
+    issuer: 'HP',
+    category: 'Business',
+  },
+  {
+    name: 'Power BI for Beginners',
+    issuer: 'Microsoft',
+    category: 'Data Analytics',
+  },
+  {
+    name: 'Selling Online',
+    issuer: 'HP',
+    category: 'Business',
+  },
+  {
+    name: 'Social Entrepreneurship',
+    issuer: 'HP',
+    category: 'Business',
+  },
+  {
+    name: 'Starting a small Business',
+    issuer: 'HP',
+    category: 'Business',
   },
 ];
