@@ -1,0 +1,215 @@
+
+/* =========================================
+   CLIENT EDITS SECTION
+========================================= */
+.client-edits-sec {
+  padding: 0 4vw;
+}
+
+.client-edits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .client-edits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-edits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.client-edit-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 400px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.client-edit-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+.edit-card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.edit-client-name {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 12px;
+}
+
+.edit-title {
+  font-family: var(--font-cormorant);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.edit-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.edit-play-btn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.client-edit-card:hover .edit-play-btn {
+  background: #C9A84C;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.edit-card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(201,168,76,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.client-edit-card:hover .edit-card-glow {
+  opacity: 1;
+}
+
+/* =========================================
+   HIERARCHICAL LOGOS SECTION
+========================================= */
+.clients-hierarchy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.clients-tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Headliners - Tier 1 */
+.headliners-tier {
+  gap: 64px;
+}
+.hierarchical-client-card.headliner {
+  height: 80px;
+}
+
+/* Core - Tier 2 */
+.core-tier {
+  gap: 48px;
+}
+.hierarchical-client-card.core {
+  height: 50px;
+  opacity: 0.8;
+}
+
+/* Network - Tier 3 */
+.network-tier {
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hierarchical-client-card.network {
+  height: 35px;
+  opacity: 0.5;
+}
+
+/* Common Logo Styles */
+.hierarchical-client-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(100%) brightness(0.8) contrast(1.2);
+}
+
+.hierarchical-client-card:hover {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.05) translateY(-5px);
+  opacity: 1;
+  z-index: 10;
+}
+
+.client-logo-img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+
+.edit-video-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.edit-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: background 0.2s;
+}
+.edit-close-btn:hover {
+  background: #C9A84C;
+  color: #000;
+}

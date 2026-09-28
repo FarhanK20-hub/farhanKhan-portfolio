@@ -8,6 +8,7 @@ import { useNavigation } from '@/context/NavigationContext';
 import { useTitleGlitch } from '@/hooks/useGlitch';
 import { playProjectOpenSound } from '@/lib/sound';
 import LiveCounter from '@/components/shared/LiveCounter';
+import ArchSaaSDemo from './ArchSaaSDemo';
 
 export default function ArchProjects() {
   const [openProject, setOpenProject] = useState<string | null>(null);
@@ -44,7 +45,7 @@ export default function ArchProjects() {
   };
 
   return (
-    <RevealOnScroll className="arch-sec bg-surface" id="arch-projects">
+    <RevealOnScroll className="arch-sec bg-surface" id="arch-projects" style={{ paddingTop: '60px' }}>
       <div className="sec-eyebrow">02 — PROOF OF WORK</div>
       <div 
         className="sec-title-arch"
@@ -69,6 +70,8 @@ export default function ArchProjects() {
             <div style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em' }}>PRODUCTS SHIPPED</div>
          </div>
       </div>
+
+      <ArchSaaSDemo />
       
       <AnimatePresence mode="wait">
         {!isUnlocked ? (

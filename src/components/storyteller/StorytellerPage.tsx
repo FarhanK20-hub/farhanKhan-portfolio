@@ -3,11 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import StoryHero from './StoryHero';
 import StoryAbout from './StoryAbout';
+import StoryTools from './StoryTools';
 import StoryWork from './StoryWork';
 import StoryClients from './StoryClients';
+import StoryCommunity from './StoryCommunity';
 import StoryContact from './StoryContact';
 import StoryFooter from './StoryFooter';
 import { useNavigation } from '@/context/NavigationContext';
+import StoryClientEdits from './StoryClientEdits';
 import StoryAI from './StoryAI';
 
 export default function StorytellerPage() {
@@ -39,7 +42,10 @@ export default function StorytellerPage() {
       <StoryHero />
       <StoryAbout />
       <StoryWork />
+      <StoryTools />
+      <StoryClientEdits />
       <StoryClients />
+      <StoryCommunity />
       <StoryContact />
       <StoryFooter />
       <StoryAI />

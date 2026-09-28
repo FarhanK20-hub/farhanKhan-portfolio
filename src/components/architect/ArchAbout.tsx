@@ -66,7 +66,7 @@ export default function ArchAbout() {
   }, [activeSkill]);
 
   return (
-    <RevealOnScroll className="arch-sec bg-surface" id="arch-about">
+    <RevealOnScroll className="arch-sec bg-surface" id="arch-about" style={{ paddingBottom: '60px' }}>
       <div className="sec-eyebrow">01 — THE BEGINNING</div>
       <div
         className="sec-title-arch"
@@ -198,7 +198,7 @@ export default function ArchAbout() {
         </div>
       </div>
 
-      <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, #0d0d18 20%, #0d0d18 80%, transparent)', opacity: 0.6, marginTop: '160px' }}></div>
+      <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, #0d0d18 20%, #0d0d18 80%, transparent)', opacity: 0.6, marginTop: '80px' }}></div>
     </RevealOnScroll>
   );
 }

@@ -8,7 +8,9 @@ import { useNavigation } from '@/context/NavigationContext';
 
 export default function RadioWidget() {
   const { setHoverCursor, screen } = useNavigation();
-  const [currentIdx, setCurrentIdx] = useState(0);
+  const [currentIdx, setCurrentIdx] = useState(() =>
+    Math.floor(Math.random() * RADIO_TRACKS.length)
+  );
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -49,7 +51,12 @@ export default function RadioWidget() {
   };
 
   const nextTrack = () => {
-    setCurrentIdx((prev) => (prev + 1) % RADIO_TRACKS.length);
+    setCurrentIdx((prev) => {
+      // Pick a random track that isn't the current one
+      const remaining = RADIO_TRACKS.length - 1;
+      const rand = Math.floor(Math.random() * remaining);
+      return rand >= prev ? rand + 1 : rand;
+    });
     setIsPlaying(true);
   };
 
