@@ -29,22 +29,22 @@ export const RADIO_TRACKS = [
   {
     title: 'Lose My Mind',
     artist: 'Don Toliver ft. Doja Cat',
-    src: '/photos/songs/Don Toliver - Lose My Mind (feat. Doja Cat) [From F1 The Movie] [Official Audio].mp3',
+    src: '/songs/Don Toliver - Lose My Mind (feat. Doja Cat) [From F1 The Movie] [Official Audio].mp3',
   },
   {
     title: 'Just Keep Watching',
     artist: 'Tate McRae',
-    src: '/photos/songs/Tate McRae - Just Keep Watching (From F1 The Movie) [Official Audio].mp3',
+    src: '/songs/Tate McRae - Just Keep Watching (From F1 The Movie) [Official Audio].mp3',
   },
   {
     title: 'Loser',
     artist: 'Tame Impala',
-    src: '/photos/songs/Tame Impala - Loser.mp3',
+    src: '/songs/Tame Impala - Loser.mp3',
   },
   {
     title: 'Down',
     artist: 'Tujamo',
-    src: '/photos/songs/Tujamo - Down (Official Music Video).mp3',
+    src: '/songs/Tujamo - Down (Official Music Video).mp3',
   },
 ];
 
